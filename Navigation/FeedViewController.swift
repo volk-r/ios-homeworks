@@ -16,7 +16,7 @@ final class FeedViewController: UIViewController {
     private let postButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         button.setTitle("Посмотри меня", for: .normal)
-        button.setTitle("Узнай новость!", for: .selected)
+        button.setTitle("Узнай новость!", for: .highlighted)
         button.backgroundColor = .black
 
         return button
