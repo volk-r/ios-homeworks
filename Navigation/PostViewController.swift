@@ -25,7 +25,7 @@ final class PostViewController: UIViewController {
     }
 
     private func openPostButton() {
-        let barItem = UIBarButtonItem(title: "Открой меня!", style: .done, target: self, action: #selector(barItemAction))
+        let barItem = UIBarButtonItem(title: "Открой меня!", style: .plain, target: self, action: #selector(barItemAction))
         navigationItem.rightBarButtonItem = barItem
     }
 
