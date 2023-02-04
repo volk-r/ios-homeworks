@@ -10,6 +10,7 @@
 		3C338210298D801600140824 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C33820F298D801600140824 /* ProfileViewController.swift */; };
 		3C338214298D82BE00140824 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C338213298D82BE00140824 /* MainTabBarViewController.swift */; };
 		3C9B1969298D893500555016 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9B1968298D893500555016 /* PostViewController.swift */; };
+		3C9B196B298E448E00555016 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9B196A298E448E00555016 /* InfoViewController.swift */; };
 		3CD53A3D298D770300B826F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD53A3C298D770300B826F7 /* AppDelegate.swift */; };
 		3CD53A41298D770300B826F7 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD53A40298D770300B826F7 /* FeedViewController.swift */; };
 		3CD53A46298D770500B826F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CD53A45298D770500B826F7 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 		3C33820F298D801600140824 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3C338213298D82BE00140824 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		3C9B1968298D893500555016 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		3C9B196A298E448E00555016 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		3CD53A39298D770300B826F7 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CD53A3C298D770300B826F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CD53A40298D770300B826F7 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				3CD53A3C298D770300B826F7 /* AppDelegate.swift */,
 				3C33820F298D801600140824 /* ProfileViewController.swift */,
 				3CD53A40298D770300B826F7 /* FeedViewController.swift */,
+				3C9B196A298E448E00555016 /* InfoViewController.swift */,
 				3C338213298D82BE00140824 /* MainTabBarViewController.swift */,
 				3C9B1968298D893500555016 /* PostViewController.swift */,
 				3CD53A45298D770500B826F7 /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 				3CD53A41298D770300B826F7 /* FeedViewController.swift in Sources */,
 				3CD53A3D298D770300B826F7 /* AppDelegate.swift in Sources */,
 				3C338210298D801600140824 /* ProfileViewController.swift in Sources */,
+				3C9B196B298E448E00555016 /* InfoViewController.swift in Sources */,
 				3C9B1969298D893500555016 /* PostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

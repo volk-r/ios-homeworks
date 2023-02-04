@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PostViewController: UIViewController {
+final class PostViewController: UIViewController {
 
     init(post: Post? = nil) {
         super.init(nibName: nil, bundle: nil)
@@ -20,7 +20,17 @@ class PostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.title = "Breaking news"
         view.backgroundColor = .white
+        openPostButton()
+    }
+
+    private func openPostButton() {
+        let barItem = UIBarButtonItem(title: "Открой меня!", style: .done, target: self, action: #selector(barItemAction))
+        navigationItem.rightBarButtonItem = barItem
+    }
+
+    @objc private func barItemAction () {
+        let infoVC = InfoViewController()
+        present(infoVC, animated: true)
     }
 }
