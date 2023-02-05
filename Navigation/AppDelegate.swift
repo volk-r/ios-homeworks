@@ -15,10 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        let feedVC = MainTabBarViewController()
-        let navigationController = UINavigationController(rootViewController: feedVC)
-
-        window?.rootViewController = navigationController
+//        let feedVC = MainTabBarViewController()
+//        let navigationController = UINavigationController(rootViewController: feedVC)
+//
+//        window?.rootViewController = navigationController
+        window?.rootViewController = MainTabBarViewController()
         window?.makeKeyAndVisible()
 
         return true
