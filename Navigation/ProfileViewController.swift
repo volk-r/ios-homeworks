@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ProfileViewController.swift
 //  Navigation
 //
 //  Created by Roman Romanov on 03.02.2023.
@@ -7,13 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ProfileVoewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .magenta
     }
 
-
 }
-
