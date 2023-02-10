@@ -9,6 +9,8 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
+    private var statusText: String = ""
+    
     private let nameLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 165, y: 80, width: 300, height: 40))
         label.font = .systemFont(ofSize: 18, weight: .bold)
@@ -54,6 +56,22 @@ class ProfileHeaderView: UIView {
         return button
     }()
     
+    private lazy var textField: UITextField = {
+        let textField = UITextField(frame: CGRect(x: 165, y: 165, width: 210, height: 40))
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Set new status"
+        
+        textField.layer.cornerRadius = 12
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.borderWidth = 1
+        
+        textField.layer.backgroundColor = UIColor.white.cgColor
+        textField.font = .systemFont(ofSize: 15, weight: .regular)
+        textField.clipsToBounds = true
+        
+        return textField
+    }()
+    
     init() {
         super.init(frame: .zero)
         
@@ -61,12 +79,18 @@ class ProfileHeaderView: UIView {
         addSubview(nameLabel)
         addSubview(statusLabel)
         
-        setupButton()
+        textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        addSubview(textField)
         
+        setupButton()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func statusTextChanged(_ textField: UITextField) {
+        statusText = textField.text!
     }
     
     private func setupButton() {
@@ -76,6 +100,7 @@ class ProfileHeaderView: UIView {
     
     @objc func buttonPressed() {
         print(statusLabel.text ?? "")
+        statusLabel.text = statusText
     }
     
 }
