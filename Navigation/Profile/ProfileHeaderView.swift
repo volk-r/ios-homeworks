@@ -99,8 +99,8 @@ class ProfileHeaderView: UIView {
     }
     
     @objc func buttonPressed() {
-        print(statusLabel.text ?? "")
         statusLabel.text = statusText
+        print(statusLabel.text ?? "")
     }
     
 }
