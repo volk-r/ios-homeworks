@@ -31,11 +31,12 @@ class ProfileHeaderView: UIView {
     private let avatarImageView: UIImageView = {
         let image = UIImage(named: "avatar")
         let imageView = UIImageView(image: image!)
-        imageView.frame = CGRect(x: 16, y: 80, width: 132, height: 120)
-        imageView.layer.cornerRadius = 55
+        imageView.frame = CGRect(x: 16, y: 80, width: 125, height: 125)
+        imageView.layer.cornerRadius = 61
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 3
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
 
         return imageView
     }()
