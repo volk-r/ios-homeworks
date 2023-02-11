@@ -12,7 +12,10 @@ class ProfileHeaderView: UIView {
     private var statusText: String = ""
     
     private let nameLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 165, y: 80, width: 300, height: 40))
+        let label = UILabel()
+//        let label = UILabel(frame: CGRect(x: 165, y: 80, width: 300, height: 40))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.text = "Junior iOS developer"
         
@@ -20,7 +23,10 @@ class ProfileHeaderView: UIView {
     }()
     
     private let statusLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 165, y: 120, width: 300, height: 40))
+        let label = UILabel()
+//        let label = UILabel(frame: CGRect(x: 165, y: 120, width: 300, height: 40))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.text = "Waiting for something..."
         label.textColor = .gray
@@ -31,7 +37,10 @@ class ProfileHeaderView: UIView {
     private let avatarImageView: UIImageView = {
         let image = UIImage(named: "avatar")
         let imageView = UIImageView(image: image!)
-        imageView.frame = CGRect(x: 16, y: 80, width: 125, height: 125)
+        
+//        imageView.frame = CGRect(x: 16, y: 80, width: 125, height: 125)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
         imageView.layer.cornerRadius = 61
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 3
@@ -42,7 +51,10 @@ class ProfileHeaderView: UIView {
     }()
     
     private let statusButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 16, y: 220, width: 360, height: 40))
+        let button = UIButton()
+//        let button = UIButton(frame: CGRect(x: 16, y: 220, width: 360, height: 40))
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
         button.setTitle("Show status", for: .normal)
         button.backgroundColor = .systemBlue
         button.tintColor = .white
@@ -58,7 +70,9 @@ class ProfileHeaderView: UIView {
     }()
     
     private lazy var textField: UITextField = {
-        let textField = UITextField(frame: CGRect(x: 165, y: 165, width: 210, height: 40))
+        let textField = UITextField()
+//        let textField = UITextField(frame: CGRect(x: 165, y: 165, width: 210, height: 40))
+        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.borderStyle = .roundedRect
         textField.placeholder = "Set new status"
         
@@ -75,15 +89,10 @@ class ProfileHeaderView: UIView {
     
     init() {
         super.init(frame: .zero)
-        
-        addSubview(avatarImageView)
-        addSubview(nameLabel)
-        addSubview(statusLabel)
-        
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
-        addSubview(textField)
         
         setupButton()
+        setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -94,8 +103,42 @@ class ProfileHeaderView: UIView {
         statusText = textField.text!
     }
     
-    private func setupButton() {
+    private func setupLayout() {
+        addSubview(avatarImageView)
+        addSubview(nameLabel)
+        addSubview(statusLabel)
+        addSubview(textField)
         addSubview(statusButton)
+        
+        NSLayoutConstraint.activate([
+            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
+            avatarImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 125),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 125),
+            
+            nameLabel.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 0),
+            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 27),
+            nameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            nameLabel.heightAnchor.constraint(equalToConstant: 40),
+            
+            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 2),
+            statusLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 27),
+            statusLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            statusLabel.heightAnchor.constraint(equalToConstant: 40),
+            
+            textField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 2),
+            textField.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 27),
+            textField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            textField.heightAnchor.constraint(equalToConstant: 40),
+            
+            statusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 15),
+            statusButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            statusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            statusButton.heightAnchor.constraint(equalToConstant: 40),
+        ])
+    }
+    
+    private func setupButton() {
         statusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
