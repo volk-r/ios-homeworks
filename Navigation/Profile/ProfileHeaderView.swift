@@ -89,6 +89,8 @@ class ProfileHeaderView: UIView {
     
     init() {
         super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = false
+        
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         
         setupButton()
