@@ -90,6 +90,7 @@ class ProfileHeaderView: UIView {
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .systemGray4
         
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         
@@ -113,7 +114,7 @@ class ProfileHeaderView: UIView {
         addSubview(statusButton)
         
         NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
+            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
             avatarImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             avatarImageView.widthAnchor.constraint(equalToConstant: 125),
             avatarImageView.heightAnchor.constraint(equalToConstant: 125),
