@@ -7,10 +7,6 @@
 
 import UIKit
 
-struct Post {
-    var title: String
-}
-
 final class FeedViewController: UIViewController {
     
     lazy private var stackView: UIStackView = {
@@ -64,7 +60,7 @@ final class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .cyan
-        navigationItem.title = "Feed"
+//        navigationItem.title = "Feed"
 //        setupButton()
         layout()
     }

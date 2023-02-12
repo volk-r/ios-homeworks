@@ -148,6 +148,7 @@ class ProfileHeaderView: UIView {
     @objc func buttonPressed() {
         statusLabel.text = statusText
         print(statusLabel.text ?? "")
+        textField.text?.removeAll()
     }
     
 }
