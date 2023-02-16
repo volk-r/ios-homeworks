@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3C0C454E299571060093AE40 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0C454D299571060093AE40 /* ProfileViewController.swift */; };
 		3C0C4550299571770093AE40 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0C454F299571770093AE40 /* ProfileHeaderView.swift */; };
+		3C193E66299EA80000B7E87C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C193E65299EA80000B7E87C /* LogInViewController.swift */; };
+		3C193E68299EAC5B00B7E87C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C193E67299EAC5B00B7E87C /* LoginView.swift */; };
 		3C338214298D82BE00140824 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C338213298D82BE00140824 /* MainTabBarViewController.swift */; };
 		3C9B1969298D893500555016 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9B1968298D893500555016 /* PostViewController.swift */; };
 		3C9B196B298E448E00555016 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9B196A298E448E00555016 /* InfoViewController.swift */; };
@@ -22,6 +24,8 @@
 /* Begin PBXFileReference section */
 		3C0C454D299571060093AE40 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3C0C454F299571770093AE40 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		3C193E65299EA80000B7E87C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		3C193E67299EAC5B00B7E87C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3C338213298D82BE00140824 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		3C9B1968298D893500555016 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		3C9B196A298E448E00555016 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +54,8 @@
 			children = (
 				3C0C454D299571060093AE40 /* ProfileViewController.swift */,
 				3C0C454F299571770093AE40 /* ProfileHeaderView.swift */,
+				3C193E65299EA80000B7E87C /* LogInViewController.swift */,
+				3C193E67299EAC5B00B7E87C /* LoginView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -167,11 +173,13 @@
 			files = (
 				3C338214298D82BE00140824 /* MainTabBarViewController.swift in Sources */,
 				3CD53A41298D770300B826F7 /* FeedViewController.swift in Sources */,
+				3C193E66299EA80000B7E87C /* LogInViewController.swift in Sources */,
 				3CD53A3D298D770300B826F7 /* AppDelegate.swift in Sources */,
 				3CF010142998D98A00D4924A /* Post.swift in Sources */,
 				3C0C454E299571060093AE40 /* ProfileViewController.swift in Sources */,
 				3C0C4550299571770093AE40 /* ProfileHeaderView.swift in Sources */,
 				3C9B196B298E448E00555016 /* InfoViewController.swift in Sources */,
+				3C193E68299EAC5B00B7E87C /* LoginView.swift in Sources */,
 				3C9B1969298D893500555016 /* PostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
