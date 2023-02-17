@@ -43,17 +43,19 @@ final class LoginView: UIView {
         let loginTextField = UITextField()
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
         loginTextField.placeholder = "Email or phone"
+        loginTextField.setLeftPaddingPoints(10)
         
         loginTextField.layer.cornerRadius = 10
         loginTextField.layer.borderColor = UIColor.lightGray.cgColor
         loginTextField.layer.borderWidth = 0.5
+        loginTextField.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         loginTextField.layer.backgroundColor = UIColor.systemGray6.cgColor
         loginTextField.textColor = .black
         loginTextField.font = .systemFont(ofSize: 16, weight: .regular)
+        
         loginTextField.tintColor = colorSet
         loginTextField.autocapitalizationType = .none
-//        loginTextField.clipsToBounds = true
         
         return loginTextField
     }()
@@ -62,8 +64,10 @@ final class LoginView: UIView {
         let passwordTextField = UITextField()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholder = "Password"
+        passwordTextField.setLeftPaddingPoints(10)
         
         passwordTextField.layer.cornerRadius = 10
+        passwordTextField.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
         passwordTextField.layer.borderWidth = 0.5
         
@@ -73,7 +77,6 @@ final class LoginView: UIView {
         passwordTextField.tintColor = colorSet
         passwordTextField.autocapitalizationType = .none
         passwordTextField.isSecureTextEntry = true
-//        passwordTextField.clipsToBounds = true
         
         return passwordTextField
     }()
@@ -176,5 +179,18 @@ final class LoginView: UIView {
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
+    }
+}
+
+extension UITextField {
+    func setLeftPaddingPoints(_ amount:CGFloat){
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
+    func setRightPaddingPoints(_ amount:CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
     }
 }
