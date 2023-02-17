@@ -22,6 +22,7 @@ final class MainTabBarViewController: UITabBarController {
         let navigationControllerFeed = UINavigationController(rootViewController: feedVC)
 //        let navigationControllerProfile = UINavigationController(rootViewController: profileVC)
         let navigationControllerLogin = UINavigationController(rootViewController: loginVC)
+        navigationControllerLogin.navigationBar.isHidden = true
 
         feedVC.tabBarItem.title = "Лента"
         feedVC.tabBarItem.image = UIImage(systemName: "house.fill")

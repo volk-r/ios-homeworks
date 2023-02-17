@@ -13,7 +13,7 @@ final class LoginView: UIView {
         hexStringToUIColor(hex: "#4885CC")
     }
 
-    private let scrollView: UIScrollView = {
+    let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -57,6 +57,8 @@ final class LoginView: UIView {
         loginTextField.tintColor = colorSet
         loginTextField.autocapitalizationType = .none
         
+        loginTextField.delegate = self
+        
         return loginTextField
     }()
     
@@ -78,10 +80,12 @@ final class LoginView: UIView {
         passwordTextField.autocapitalizationType = .none
         passwordTextField.isSecureTextEntry = true
         
+        passwordTextField.delegate = self
+        
         return passwordTextField
     }()
     
-    private let loginButton: UIButton = {
+    private (set) var loginButton: UIButton = {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -111,10 +115,16 @@ final class LoginView: UIView {
         backgroundColor = .white
         setupLayout()
         checkLoginButtonStates()
+        loginTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingDidEnd)
+        passwordTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingDidEnd)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func statusTextChanged(_ textField: UITextField) {
+        print("\(String(describing: textField.placeholder)):", textField.text!)
     }
     
     private func setupLayout() {
@@ -156,6 +166,7 @@ final class LoginView: UIView {
             loginButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             loginButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             loginButton.heightAnchor.constraint(equalToConstant: 50),
+            loginButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
         ])
     }
     
@@ -182,12 +193,23 @@ final class LoginView: UIView {
     }
 }
 
+extension LoginView: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        endEditing(true)
+        
+        return true
+    }
+}
+
 extension UITextField {
+    
     func setLeftPaddingPoints(_ amount:CGFloat){
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
         self.leftView = paddingView
         self.leftViewMode = .always
     }
+    
     func setRightPaddingPoints(_ amount:CGFloat) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
         self.rightView = paddingView
