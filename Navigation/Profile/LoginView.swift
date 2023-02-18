@@ -152,7 +152,7 @@ final class LoginView: UIView {
             logoImageView.heightAnchor.constraint(equalToConstant: 100),
             logoImageView.widthAnchor.constraint(equalToConstant: 100),
             
-            loginTextField.topAnchor.constraint(equalTo: logoImageView.topAnchor, constant: 120),
+            loginTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 120),
             loginTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             loginTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             loginTextField.heightAnchor.constraint(equalToConstant: 50),
