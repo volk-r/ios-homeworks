@@ -9,6 +9,35 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    private let postModel: [PostModel] = PostModel.makePostModel()
+    
+    private lazy var tableView: UITableView = {
+        var tableView = UITableView(frame: .zero, style: .insetGrouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
+        
+        return tableView
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        layout()
+    }
+    
+    private func layout() {
+        view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
+    }
+    
+    /*
     let profileHeaderView = ProfileHeaderView()
     
     private let someButton: UIButton = {
@@ -55,5 +84,30 @@ class ProfileViewController: UIViewController {
             someButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 40)
         ])
     }
+    */
 
+}
+
+extension ProfileViewController: UITableViewDelegate {
+    
+}
+
+extension ProfileViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        postModel.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+//        cell.setup(model: postModel[indexPath.row])
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = ProfileHeaderView()
+//        header.setupHeaderTex(text: postModel[indexPath.row].author)
+        return header
+    }
+    
 }
