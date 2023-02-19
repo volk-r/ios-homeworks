@@ -12,11 +12,14 @@ class ProfileViewController: UIViewController {
     private let postModel: [PostModel] = PostModel.makePostModel()
     
     private lazy var tableView: UITableView = {
-        var tableView = UITableView(frame: .zero, style: .insetGrouped)
+        var tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
+        // instead func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        tableView.headerView(forSection: 0)
+//        tableView.tableHeaderView = ProfileHeaderView()
         
         return tableView
     }()
@@ -30,10 +33,10 @@ class ProfileViewController: UIViewController {
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
@@ -89,7 +92,9 @@ class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        UITableView.automaticDimension
+    }
 }
 
 extension ProfileViewController: UITableViewDataSource {
@@ -98,16 +103,17 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
-//        cell.setup(model: postModel[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+        cell.setupCell(model: postModel[indexPath.row])
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = ProfileHeaderView()
-//        header.setupHeaderTex(text: postModel[indexPath.row].author)
-        return header
+        guard section == 0 else { return nil }
+        let view = ProfileHeaderView()
+
+        return view
     }
     
 }
