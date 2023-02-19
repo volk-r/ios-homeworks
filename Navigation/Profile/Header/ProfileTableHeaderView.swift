@@ -13,7 +13,6 @@ class ProfileHeaderView: UIView {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-//        let label = UILabel(frame: CGRect(x: 165, y: 80, width: 300, height: 40))
         label.translatesAutoresizingMaskIntoConstraints = false
         
         label.font = .systemFont(ofSize: 18, weight: .bold)
@@ -24,7 +23,6 @@ class ProfileHeaderView: UIView {
     
     private let statusLabel: UILabel = {
         let label = UILabel()
-//        let label = UILabel(frame: CGRect(x: 165, y: 120, width: 300, height: 40))
         label.translatesAutoresizingMaskIntoConstraints = false
         
         label.font = .systemFont(ofSize: 14, weight: .regular)
@@ -38,7 +36,6 @@ class ProfileHeaderView: UIView {
         let image = UIImage(named: "avatar")
         let imageView = UIImageView(image: image!)
         
-//        imageView.frame = CGRect(x: 16, y: 80, width: 125, height: 125)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         imageView.layer.cornerRadius = 61
@@ -52,7 +49,6 @@ class ProfileHeaderView: UIView {
     
     private let statusButton: UIButton = {
         let button = UIButton()
-//        let button = UIButton(frame: CGRect(x: 16, y: 220, width: 360, height: 40))
         button.translatesAutoresizingMaskIntoConstraints = false
         
         button.setTitle("Show status", for: .normal)
@@ -71,7 +67,6 @@ class ProfileHeaderView: UIView {
     
     private lazy var textField: UITextField = {
         let textField = UITextField()
-//        let textField = UITextField(frame: CGRect(x: 165, y: 165, width: 210, height: 40))
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.borderStyle = .roundedRect
         textField.placeholder = "Set new status"

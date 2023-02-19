@@ -61,7 +61,6 @@ final class FeedViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .cyan
 //        navigationItem.title = "Feed"
-//        setupButton()
         layout()
     }
     

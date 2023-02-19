@@ -101,37 +101,26 @@ class PostTableViewCell: UITableViewCell {
             contentCellView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             contentCellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             contentCellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-        ])
-        
-        NSLayoutConstraint.activate([
+            
             authorLabel.topAnchor.constraint(equalTo: contentCellView.topAnchor, constant: labelInset),
             authorLabel.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor, constant: labelInset),
             authorLabel.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -labelInset),
-        ])
-        
-        NSLayoutConstraint.activate([
+            
             postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: labelInset),
             postImageView.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor),
             postImageView.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor),
             postImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-        ])
-        
-        NSLayoutConstraint.activate([
+            
             descriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: labelInset),
             descriptionLabel.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor, constant: labelInset),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -labelInset),
-        ])
-        
-        NSLayoutConstraint.activate([
+            
             likeLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: labelInset),
             likeLabel.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor, constant: labelInset),
             likeLabel.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -labelInset),
             likeLabel.bottomAnchor.constraint(equalTo: contentCellView.bottomAnchor, constant: -labelInset),
-        ])
-        
-        NSLayoutConstraint.activate([
+            
             viewLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: labelInset),
-//            viewLabel.leadingAnchor.constraint(equalTo: likeLabel.trailingAnchor, constant: labelInset),
             viewLabel.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -labelInset),
             viewLabel.bottomAnchor.constraint(equalTo: contentCellView.bottomAnchor, constant: -labelInset),
         ])
