@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
     private let postModel: [PostModel] = PostModel.makePostModel()
     
     private lazy var tableView: UITableView = {
-        var tableView = UITableView(frame: .zero, style: .plain)
+        var tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self

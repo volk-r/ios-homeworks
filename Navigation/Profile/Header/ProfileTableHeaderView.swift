@@ -89,7 +89,6 @@ class ProfileHeaderView: UIView {
     
     init() {
         super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .systemGray4
         
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
@@ -138,7 +137,7 @@ class ProfileHeaderView: UIView {
             statusButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             statusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             statusButton.heightAnchor.constraint(equalToConstant: 40),
-            statusButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+            statusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
         ])
     }
     
