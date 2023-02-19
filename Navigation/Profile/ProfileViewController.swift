@@ -111,9 +111,8 @@ extension ProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard section == 0 else { return nil }
-        let view = ProfileHeaderView()
-
-        return view
+        
+        return ProfileHeaderView()
     }
     
 }
