@@ -9,16 +9,7 @@ import UIKit
 
 final class PhotosViewController: UIViewController {
     
-    private var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .systemGray4
-        collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
-        
-        return collectionView
-    }()
+    private lazy var verticalCollectionView: UICollectionView = makeCollectionView(scrolllDirection: .vertical)
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,18 +30,18 @@ final class PhotosViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        verticalCollectionView.dataSource = self
+        verticalCollectionView.delegate = self
     }
     
     private func layout() {
-        view.addSubview(collectionView)
+        view.addSubview(verticalCollectionView)
         
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            verticalCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            verticalCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            verticalCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            verticalCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 

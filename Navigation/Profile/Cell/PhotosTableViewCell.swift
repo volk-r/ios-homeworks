@@ -21,7 +21,7 @@ final class PhotosTableViewCell: UITableViewCell {
         return view
     }()
     
-    private let cellHeaderLabel: UILabel = {
+    let cellHeaderLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 24, weight: .bold)
@@ -41,26 +41,35 @@ final class PhotosTableViewCell: UITableViewCell {
         return button
     }()
     
-    // MARK: - images
-    //    private let postImageView: UIImageView = {
-    //        var imageView = UIImageView()
-    //        imageView.translatesAutoresizingMaskIntoConstraints = false
-    //        imageView.contentMode = .scaleAspectFit
-    //        imageView.backgroundColor = .black
-    //        return imageView
-    //    }()
+    private lazy var horizontalCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .systemGray4
+        collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+        
+        return collectionView
+    }()
     
     // MARK: - layout
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
+        setupCollectionView()
         
         galleryButton.addTarget(self, action: #selector(tapAction), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupCollectionView() {
+        horizontalCollectionView.dataSource = self
+        horizontalCollectionView.delegate = self
     }
     
     override func prepareForReuse() {
@@ -77,7 +86,7 @@ final class PhotosTableViewCell: UITableViewCell {
             contentCellView,
             cellHeaderLabel,
             galleryButton,
-//            postImageView,
+            horizontalCollectionView,
         ].forEach{ contentView.addSubview($0) }
         
         let labelInset: CGFloat = 12
@@ -95,13 +104,14 @@ final class PhotosTableViewCell: UITableViewCell {
             galleryButton.leadingAnchor.constraint(equalTo: cellHeaderLabel.trailingAnchor, constant: labelInset),
             galleryButton.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -labelInset),
             galleryButton.centerYAnchor.constraint(equalTo: cellHeaderLabel.centerYAnchor),
+//            galleryButton.bottomAnchor.constraint(equalTo: contentCellView.bottomAnchor),
 //            cellHeaderLabel.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             
-//            postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: labelInset),
-//            postImageView.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor),
-//            postImageView.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor),
-//            postImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-//            postImageView.bottomAnchor.constraint(equalTo: contentCellView.bottomAnchor, constant: -labelInset),
+            horizontalCollectionView.topAnchor.constraint(equalTo: cellHeaderLabel.bottomAnchor, constant: labelInset),
+            horizontalCollectionView.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor, constant: 8),
+            horizontalCollectionView.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -8),
+            horizontalCollectionView.bottomAnchor.constraint(equalTo: contentCellView.bottomAnchor),
+            horizontalCollectionView.heightAnchor.constraint(greaterThanOrEqualToConstant: 100)
         ])
     }
     
@@ -112,4 +122,43 @@ final class PhotosTableViewCell: UITableViewCell {
         navController?.pushViewController(photoVC, animated: true)
     }
 
+}
+
+extension PhotosTableViewCell: UICollectionViewDataSource {
+    private var maxHorizontalGalleryImages: Int { return 7 }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        maxHorizontalGalleryImages
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if (indexPath.item == maxHorizontalGalleryImages - 1) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as! PhotoCollectionViewCell
+            cell.setupButtonCell()
+            cell.openGalleryButton.addTarget(self, action: #selector(tapAction), for: .touchUpInside)
+            
+            return cell
+        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as! PhotoCollectionViewCell
+        cell.setupHorizontalCell(imageName: galleryImages[indexPath.item])
+        
+        return cell
+    }
+    
+}
+
+extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
+    private var sideInset: CGFloat { return 8 }
+    private var elementCount: CGFloat { return 4 }
+    private var insetCount: CGFloat { return elementCount + 1 }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.bounds.width - sideInset * insetCount) / elementCount
+        return CGSize(width: width, height: width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: sideInset, left: sideInset, bottom: sideInset, right: sideInset)
+    }
 }

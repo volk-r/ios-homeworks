@@ -17,9 +17,41 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    lazy var openGalleryButton: UIButton = {
+        let button = UIButton(frame: contentView.bounds)
+        button.setTitle("See\nmore", for: .normal)
+        button.titleLabel?.lineBreakMode = .byWordWrapping
+        button.titleLabel?.textAlignment = .center
+        button.backgroundColor = .white
+        button.setTitleColor(.black, for: .normal)
+        button.layer.cornerRadius = 6
+
+        return button
+    }()
+    
     func setupCell(imageName: String) {
         cellImageView.image = UIImage(named: imageName)!
         layout()
+    }
+    
+    func setupHorizontalCell(imageName: String) {
+        cellImageView.image = UIImage(named: imageName)!
+        cellImageView.layer.cornerRadius = 6
+        cellImageView.clipsToBounds = true
+        
+        layout()
+    }
+    
+    func setupButtonCell() {
+        contentView.addSubview(openGalleryButton)
+        
+        NSLayoutConstraint.activate([
+            openGalleryButton.topAnchor.constraint(equalTo: contentView.topAnchor),
+            openGalleryButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            openGalleryButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            openGalleryButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            openGalleryButton.heightAnchor.constraint(greaterThanOrEqualToConstant: contentView.bounds.height)
+        ])
     }
     
     func layout() {
