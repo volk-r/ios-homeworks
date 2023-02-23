@@ -72,11 +72,6 @@ final class PhotosTableViewCell: UITableViewCell {
         horizontalCollectionView.delegate = self
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        cellHeaderLabel.text = ""
-    }
-    
     func setupCell(navigationController: UINavigationController?) {
         navController = navigationController
     }
