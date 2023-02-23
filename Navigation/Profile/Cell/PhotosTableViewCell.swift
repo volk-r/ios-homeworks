@@ -47,7 +47,6 @@ final class PhotosTableViewCell: UITableViewCell {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .systemGray4
         collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
         
         return collectionView
@@ -70,7 +69,6 @@ final class PhotosTableViewCell: UITableViewCell {
     private func setupCollectionView() {
         horizontalCollectionView.dataSource = self
         horizontalCollectionView.delegate = self
-        horizontalCollectionView.backgroundColor = .white
     }
     
     func setupCell(navigationController: UINavigationController?) {
