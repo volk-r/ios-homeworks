@@ -70,6 +70,7 @@ final class PhotosTableViewCell: UITableViewCell {
     private func setupCollectionView() {
         horizontalCollectionView.dataSource = self
         horizontalCollectionView.delegate = self
+        horizontalCollectionView.backgroundColor = .white
     }
     
     func setupCell(navigationController: UINavigationController?) {
@@ -154,6 +155,6 @@ extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: sideInset, left: sideInset, bottom: sideInset, right: sideInset)
+        UIEdgeInsets(top: sideInset, left: 0, bottom: sideInset, right: 0)
     }
 }
