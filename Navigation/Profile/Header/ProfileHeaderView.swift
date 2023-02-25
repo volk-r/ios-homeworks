@@ -173,7 +173,8 @@ class ProfileHeaderView: UIView {
             avatarImageViewForAnimation.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             avatarImageViewForAnimation.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             avatarImageViewForAnimation.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            avatarImageViewForAnimation.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+//            avatarImageViewForAnimation.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            avatarImageViewForAnimation.heightAnchor.constraint(equalToConstant: 1000),
         ])
     }
     
@@ -196,18 +197,20 @@ class ProfileHeaderView: UIView {
         print("close Avatar")
         isAvatarOpened = false
         
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut) {
             self.avatarImageView.layer.cornerRadius = 61
             self.closeAvatarButton.alpha = 0.0
             
             self.avatarImageView.center = self.avatarImageViewCenter
             
+            self.avatarImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            
             self.avatarImageView.layoutIfNeeded()
-        }, completion: { _ in
+        } completion: { _ in
             UIView.animate(withDuration: 0.3) {
                 self.avatarImageViewForAnimation.alpha = 0.0
             }
-        })
+        }
     }
     
     @objc private func avatarTapAction() {
@@ -221,22 +224,22 @@ class ProfileHeaderView: UIView {
         isAvatarOpened = true
         
         if let keyWindow = self.superview {
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut) {
                 self.avatarImageViewForAnimation.alpha = 0.7
+                self.avatarImageView.layer.cornerRadius = 0
 
                 self.avatarImageViewCenter = self.avatarImageView.center
                 self.avatarImageView.center = keyWindow.center
+                self.avatarImageView.center.y -= 50
                 // scale
-//                self.avatarImageViewWidthConstraint.constant = keyWindow.frame.width
-//                self.avatarImageViewHeightConstraint.constant = keyWindow.frame.width
+                self.avatarImageView.transform = CGAffineTransform(scaleX: 3, y: 3)
                 
                 self.avatarImageView.layoutIfNeeded()
-            }, completion: { _ in
+            } completion: { _ in
                 UIView.animate(withDuration: 0.3) {
-                    self.avatarImageView.layer.cornerRadius = 0
                     self.closeAvatarButton.alpha = 1
                 }
-            })
+            }
         }
     }
 }
