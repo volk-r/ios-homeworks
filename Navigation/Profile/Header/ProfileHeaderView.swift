@@ -11,11 +11,7 @@ class ProfileHeaderView: UIView {
     
     private var statusText: String = ""
     
-    private var avatarImageViewTopConstraint = NSLayoutConstraint()
-    private var avatarImageViewLeadingConstraint = NSLayoutConstraint()
-    private var avatarImageViewWidthConstraint = NSLayoutConstraint()
-    private var avatarImageViewHeightConstraint = NSLayoutConstraint()
-    
+    private var avatarImageViewCenter: CGPoint = CGPoint(x: 0.0, y: 0.0)
     private var isAvatarOpened: Bool = false
     
     private let nameLabel: UILabel = {
@@ -48,12 +44,33 @@ class ProfileHeaderView: UIView {
         imageView.layer.cornerRadius = 61
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 3
+        imageView.layer.masksToBounds = false
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         
         imageView.isUserInteractionEnabled = true
 
         return imageView
+    }()
+    
+    let avatarImageViewForAnimation: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.alpha = 0.0
+        return view
+    }()
+    
+    private lazy var closeAvatarButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let image = UIImage(systemName: "xmark.circle.fill")
+        button.setImage(image, for: .normal)
+        button.tintColor = .black
+        button.alpha = 0.0
+        button.addTarget(self, action: #selector(closeAvatar), for: .touchUpInside)
+        
+        return button
     }()
     
     private let statusButton: UIButton = {
@@ -112,22 +129,25 @@ class ProfileHeaderView: UIView {
     }
     
     private func setupLayout() {
-        addSubview(avatarImageView)
         addSubview(nameLabel)
         addSubview(statusLabel)
         addSubview(textField)
         addSubview(statusButton)
         
-        avatarImageViewTopConstraint = avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10)
-        avatarImageViewLeadingConstraint = avatarImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16)
-        avatarImageViewWidthConstraint = avatarImageView.widthAnchor.constraint(equalToConstant: 125)
-        avatarImageViewHeightConstraint = avatarImageView.heightAnchor.constraint(equalToConstant: 125)
+        addSubview(avatarImageViewForAnimation)
+        addSubview(avatarImageView)
+        addSubview(closeAvatarButton)
         
         NSLayoutConstraint.activate([
-            avatarImageViewTopConstraint,
-            avatarImageViewLeadingConstraint,
-            avatarImageViewWidthConstraint,
-            avatarImageViewHeightConstraint,
+            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            avatarImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 125),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 125),
+            
+            closeAvatarButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            closeAvatarButton.heightAnchor.constraint(equalToConstant: 40),
+            closeAvatarButton.widthAnchor.constraint(equalToConstant: 40),
+            closeAvatarButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -5),
             
             nameLabel.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 0),
             nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 27),
@@ -149,6 +169,11 @@ class ProfileHeaderView: UIView {
             statusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             statusButton.heightAnchor.constraint(equalToConstant: 40),
             statusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            
+            avatarImageViewForAnimation.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            avatarImageViewForAnimation.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            avatarImageViewForAnimation.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            avatarImageViewForAnimation.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
     }
     
@@ -167,71 +192,51 @@ class ProfileHeaderView: UIView {
         avatarImageView.addGestureRecognizer(tapGesture)
     }
     
+    @objc private func closeAvatar() {
+        print("close Avatar")
+        isAvatarOpened = false
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.avatarImageView.layer.cornerRadius = 61
+            self.closeAvatarButton.alpha = 0.0
+            
+            self.avatarImageView.center = self.avatarImageViewCenter
+            
+            self.avatarImageView.layoutIfNeeded()
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.3) {
+                self.avatarImageViewForAnimation.alpha = 0.0
+            }
+        })
+    }
+    
     @objc private func avatarTapAction() {
+        print("show avatar")
+        
         if (isAvatarOpened == true) {
             print("avatar shown")
             return
         }
         
-        print("show avatar")
         isAvatarOpened = true
         
         if let keyWindow = self.superview {
-            let whiteBackgroundView = BackdropView(frame: keyWindow.frame)
-            
-            let closeButton: UIButton = {
-                let button = UIButton()
-                button.translatesAutoresizingMaskIntoConstraints = false
-                let image = UIImage(systemName: "xmark.circle")
-                button.setBackgroundImage(image, for: .normal)
-                button.tintColor = .black
-                
-                return button
-            }()
-
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-                keyWindow.addSubview(whiteBackgroundView)
-                keyWindow.addSubview(self.avatarImageView)
-                keyWindow.addSubview(closeButton)
-                
-                NSLayoutConstraint.activate([
-                    closeButton.topAnchor.constraint(equalTo: whiteBackgroundView.safeAreaLayoutGuide.topAnchor, constant: 10),
-                    closeButton.heightAnchor.constraint(equalToConstant: 40),
-                    closeButton.widthAnchor.constraint(equalToConstant: 40),
-                    closeButton.trailingAnchor.constraint(equalTo: whiteBackgroundView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-                    closeButton.bottomAnchor.constraint(equalTo: whiteBackgroundView.safeAreaLayoutGuide.bottomAnchor),
-                ])
+                self.avatarImageViewForAnimation.alpha = 0.7
 
-                self.avatarImageViewLeadingConstraint = keyWindow.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor)
+                self.avatarImageViewCenter = self.avatarImageView.center
                 self.avatarImageView.center = keyWindow.center
-                
-                self.avatarImageViewWidthConstraint.constant = keyWindow.frame.width
-                self.avatarImageViewHeightConstraint.constant = keyWindow.frame.width
+                // scale
+//                self.avatarImageViewWidthConstraint.constant = keyWindow.frame.width
+//                self.avatarImageViewHeightConstraint.constant = keyWindow.frame.width
                 
                 self.avatarImageView.layoutIfNeeded()
             }, completion: { _ in
                 UIView.animate(withDuration: 0.3) {
                     self.avatarImageView.layer.cornerRadius = 0
+                    self.closeAvatarButton.alpha = 1
                 }
             })
         }
     }
-}
-
-final class BackdropView: UIView {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        make()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func make() {
-        backgroundColor = .white
-        alpha = 0.6
-    }
-
 }
