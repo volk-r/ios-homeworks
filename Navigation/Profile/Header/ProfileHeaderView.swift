@@ -9,6 +9,10 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
+    enum Metric {
+        static let avatarImageViewWidthAnchor = 125
+    }
+    
     private var statusText: String = ""
     
     private var avatarImageViewCenter: CGPoint = CGPoint(x: 0.0, y: 0.0)
@@ -141,8 +145,8 @@ class ProfileHeaderView: UIView {
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
             avatarImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 125),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 125),
+            avatarImageView.widthAnchor.constraint(equalToConstant: Metric.avatarImageViewWidthAnchor),
+            avatarImageView.heightAnchor.constraint(equalToConstant: Metric.avatarImageViewWidthAnchor),
             
             closeAvatarButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             closeAvatarButton.heightAnchor.constraint(equalToConstant: 40),
