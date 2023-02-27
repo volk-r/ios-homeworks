@@ -10,7 +10,9 @@ import UIKit
 class ProfileHeaderView: UIView {
     
     enum Metric {
-        static let avatarImageViewWidthAnchor = 125
+        static let avatarImageViewWidthAnchor: CGFloat = 125
+        static let avatarImageViewWBorder: CGFloat = 3
+        static let avatarImageViewWCornerRadius: CGFloat = 61
     }
     
     private var statusText: String = ""
@@ -202,11 +204,12 @@ class ProfileHeaderView: UIView {
         isAvatarOpened = false
         
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut) {
-            self.avatarImageView.layer.cornerRadius = 61
+            self.avatarImageView.layer.cornerRadius = Metric.avatarImageViewWCornerRadius
             self.closeAvatarButton.alpha = 0.0
+            self.avatarImageView.layer.borderWidth = Metric.avatarImageViewWBorder
             
             self.avatarImageView.center = self.avatarImageViewCenter
-            
+            // downscale
             self.avatarImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
             
             self.avatarImageView.layoutIfNeeded()
@@ -231,12 +234,12 @@ class ProfileHeaderView: UIView {
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut) {
                 self.avatarImageViewForAnimation.alpha = 0.7
                 self.avatarImageView.layer.cornerRadius = 0
+                self.avatarImageView.layer.borderWidth = 0
 
                 self.avatarImageViewCenter = self.avatarImageView.center
-                self.avatarImageView.center = keyWindow.center
-                self.avatarImageView.center.y -= 50
-                // scale
-                self.avatarImageView.transform = CGAffineTransform(scaleX: 3, y: 3)
+                self.avatarImageView.center = CGPoint(x: keyWindow.center.x, y: keyWindow.center.y - 45)
+                // upscale
+                self.avatarImageView.transform = CGAffineTransform(scaleX: 3.1, y: 3.1)
                 
                 self.avatarImageView.layoutIfNeeded()
             } completion: { _ in
