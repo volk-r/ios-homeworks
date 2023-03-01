@@ -94,35 +94,33 @@ class PostTableViewCell: UITableViewCell {
             viewLabel
         ].forEach{ contentView.addSubview($0) }
         
-        let labelInset: CGFloat = 16
-        
         NSLayoutConstraint.activate([
             contentCellView.topAnchor.constraint(equalTo: contentView.topAnchor),
             contentCellView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             contentCellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             contentCellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            authorLabel.topAnchor.constraint(equalTo: contentCellView.topAnchor, constant: labelInset),
-            authorLabel.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor, constant: labelInset),
-            authorLabel.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -labelInset),
+            authorLabel.topAnchor.constraint(equalTo: contentCellView.topAnchor, constant: Metric.labelInset),
+            authorLabel.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor, constant: Metric.labelInset),
+            authorLabel.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -Metric.labelInset),
             
-            postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: labelInset),
+            postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: Metric.labelInset),
             postImageView.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor),
             postImageView.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor),
             postImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             
-            descriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: labelInset),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor, constant: labelInset),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -labelInset),
+            descriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: Metric.labelInset),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor, constant: Metric.labelInset),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -Metric.labelInset),
             
-            likeLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: labelInset),
-            likeLabel.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor, constant: labelInset),
-            likeLabel.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -labelInset),
-            likeLabel.bottomAnchor.constraint(equalTo: contentCellView.bottomAnchor, constant: -labelInset),
+            likeLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: Metric.labelInset),
+            likeLabel.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor, constant: Metric.labelInset),
+            likeLabel.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -Metric.labelInset),
+            likeLabel.bottomAnchor.constraint(equalTo: contentCellView.bottomAnchor, constant: -Metric.labelInset),
             
-            viewLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: labelInset),
-            viewLabel.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -labelInset),
-            viewLabel.bottomAnchor.constraint(equalTo: contentCellView.bottomAnchor, constant: -labelInset),
+            viewLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: Metric.labelInset),
+            viewLabel.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -Metric.labelInset),
+            viewLabel.bottomAnchor.constraint(equalTo: contentCellView.bottomAnchor, constant: -Metric.labelInset),
         ])
     }
 

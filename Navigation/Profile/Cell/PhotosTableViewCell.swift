@@ -83,25 +83,23 @@ final class PhotosTableViewCell: UITableViewCell {
             horizontalCollectionView,
         ].forEach{ contentView.addSubview($0) }
         
-        let labelInset: CGFloat = 12
-        
         NSLayoutConstraint.activate([
             contentCellView.topAnchor.constraint(equalTo: contentView.topAnchor),
             contentCellView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             contentCellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             contentCellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            cellHeaderLabel.topAnchor.constraint(equalTo: contentCellView.topAnchor, constant: labelInset),
-            cellHeaderLabel.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor, constant: labelInset),
+            cellHeaderLabel.topAnchor.constraint(equalTo: contentCellView.topAnchor, constant: Metric.labelInset),
+            cellHeaderLabel.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor, constant: Metric.labelInset),
             
-            galleryButton.topAnchor.constraint(equalTo: contentCellView.topAnchor, constant: labelInset),
-            galleryButton.leadingAnchor.constraint(equalTo: cellHeaderLabel.trailingAnchor, constant: labelInset),
-            galleryButton.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -labelInset),
+            galleryButton.topAnchor.constraint(equalTo: contentCellView.topAnchor, constant: Metric.labelInset),
+            galleryButton.leadingAnchor.constraint(equalTo: cellHeaderLabel.trailingAnchor, constant: Metric.labelInset),
+            galleryButton.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -Metric.labelInset),
             galleryButton.centerYAnchor.constraint(equalTo: cellHeaderLabel.centerYAnchor),
 //            galleryButton.bottomAnchor.constraint(equalTo: contentCellView.bottomAnchor),
 //            cellHeaderLabel.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             
-            horizontalCollectionView.topAnchor.constraint(equalTo: cellHeaderLabel.bottomAnchor, constant: labelInset),
+            horizontalCollectionView.topAnchor.constraint(equalTo: cellHeaderLabel.bottomAnchor, constant: Metric.labelInset),
             horizontalCollectionView.leadingAnchor.constraint(equalTo: contentCellView.leadingAnchor, constant: 8),
             horizontalCollectionView.trailingAnchor.constraint(equalTo: contentCellView.trailingAnchor, constant: -8),
             horizontalCollectionView.bottomAnchor.constraint(equalTo: contentCellView.bottomAnchor),

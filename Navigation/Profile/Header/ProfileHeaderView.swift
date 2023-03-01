@@ -9,12 +9,6 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-    enum Metric {
-        static let avatarImageViewWidthAnchor: CGFloat = 125
-        static let avatarImageViewWBorder: CGFloat = 3
-        static let avatarImageViewWCornerRadius: CGFloat = 61
-    }
-    
     private var statusText: String = ""
     
     private var avatarImageViewCenter: CGPoint = CGPoint(x: 0.0, y: 0.0)
