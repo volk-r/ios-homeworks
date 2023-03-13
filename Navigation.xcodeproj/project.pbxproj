@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3C0C454E299571060093AE40 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0C454D299571060093AE40 /* ProfileViewController.swift */; };
 		3C0C4550299571770093AE40 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0C454F299571770093AE40 /* ProfileHeaderView.swift */; };
+		3C144BA629BF8E3D004DFFE6 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C144BA529BF8E3D004DFFE6 /* UITextField+Extension.swift */; };
+		3C144BA829BF9DB7004DFFE6 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C144BA729BF9DB7004DFFE6 /* AppConstant.swift */; };
 		3C193E66299EA80000B7E87C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C193E65299EA80000B7E87C /* LogInViewController.swift */; };
 		3C193E68299EAC5B00B7E87C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C193E67299EAC5B00B7E87C /* LoginView.swift */; };
 		3C338214298D82BE00140824 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C338213298D82BE00140824 /* MainTabBarViewController.swift */; };
@@ -33,6 +35,8 @@
 /* Begin PBXFileReference section */
 		3C0C454D299571060093AE40 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3C0C454F299571770093AE40 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		3C144BA529BF8E3D004DFFE6 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		3C144BA729BF9DB7004DFFE6 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 		3C193E65299EA80000B7E87C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		3C193E67299EAC5B00B7E87C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3C338213298D82BE00140824 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			children = (
 				3CA75A2529A14B1700743167 /* UIView+Extension.swift */,
 				3C445D2829A7A7060004FBCE /* UIViewController+Extansion.swift */,
+				3C144BA529BF8E3D004DFFE6 /* UITextField+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 				3C9B196A298E448E00555016 /* InfoViewController.swift */,
 				3C338213298D82BE00140824 /* MainTabBarViewController.swift */,
 				3C9B1968298D893500555016 /* PostViewController.swift */,
+				3C144BA729BF9DB7004DFFE6 /* AppConstant.swift */,
 				3CD53A45298D770500B826F7 /* Assets.xcassets */,
 				3CD53A47298D770500B826F7 /* LaunchScreen.storyboard */,
 				3CD53A4A298D770500B826F7 /* Info.plist */,
@@ -251,9 +257,11 @@
 				3CD53A41298D770300B826F7 /* FeedViewController.swift in Sources */,
 				3CA75A2829A14E6500743167 /* PostTableViewCell.swift in Sources */,
 				3C193E66299EA80000B7E87C /* LogInViewController.swift in Sources */,
+				3C144BA629BF8E3D004DFFE6 /* UITextField+Extension.swift in Sources */,
 				3CD53A3D298D770300B826F7 /* AppDelegate.swift in Sources */,
 				3C65F05129A743E100996373 /* PhotosTableViewCell.swift in Sources */,
 				3C7D5BD329AF05FC002E6A23 /* Metric.swift in Sources */,
+				3C144BA829BF9DB7004DFFE6 /* AppConstant.swift in Sources */,
 				3CF010142998D98A00D4924A /* Post.swift in Sources */,
 				3C445D2729A780E50004FBCE /* GalleryImages.swift in Sources */,
 				3C0C454E299571060093AE40 /* ProfileViewController.swift in Sources */,

@@ -12,13 +12,9 @@ final class LogInViewController: UIViewController {
     private let notification = NotificationCenter.default
     private let loginView = LoginView()
     
-//    private var oldTabbarFr: CGRect = .zero
-    
     override func loadView() {
         super.loadView()
         view = loginView
-        
-//        oldTabbarFr = self.tabBarController?.tabBar.frame ?? .zero
     }
 
     override func viewDidLoad() {
@@ -30,18 +26,12 @@ final class LogInViewController: UIViewController {
         super.viewWillAppear(animated)
         notification.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         notification.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-//        self.tabBarController?.tabBar.isHidden = true
-//        self.tabBarController?.tabBar.frame = .zero
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         notification.removeObserver(UIResponder.keyboardWillShowNotification)
         notification.removeObserver(UIResponder.keyboardWillHideNotification)
-        
-//        self.tabBarController?.tabBar.isHidden = false
-//        self.tabBarController?.tabBar.frame = oldTabbarFr
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
@@ -58,11 +48,56 @@ final class LogInViewController: UIViewController {
     
     private func setupButton() {
         loginView.loginButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        
+        loginView.loginTextField.addTarget(self, action: #selector(editing(_ :)), for: .editingDidBegin)
+        loginView.passwordTextField.addTarget(self, action: #selector(editing(_ :)), for: .editingDidBegin)
+        loginView.passwordTextField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+    }
+    
+    @objc private func editingChanged() {
+        loginView.warningLabel.isHidden = true
+    }
+    
+    @objc private func editing(_ sender: UITextField) {
+        sender.setDefaultBorder()
     }
     
     @objc private func buttonPressed() {
+        guard validation() == true else { return }
+        
         let profileVC = ProfileViewController()
         navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
+    private func validation() -> Bool {
+        if loginView.loginTextField.text == "" {
+            loginView.loginTextField.shake()
+            return false
+        }
+        
+        if loginView.passwordTextField.text == "" {
+            loginView.passwordTextField.shake()
+            return false
+        }
+        
+        if loginView.passwordTextField.text!.count < AppConstant.passMinLength ||
+           loginView.passwordTextField.text!.count > AppConstant.passMaxLength {
+            loginView.warningLabel.isHidden = false
+            return false
+        }
+        
+        guard loginView.passwordTextField.text == AppConstant.passwordValue || loginView.loginTextField.text == AppConstant.loginValue else {
+            let alert = UIAlertController(title: "Credentials incorrect", message: "Please check your login/password and try again", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Ok", style: .default) {_ in
+                print("Ok clicked")
+            }
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+            
+            return false
+        }
+        
+        return true
     }
     
 }
