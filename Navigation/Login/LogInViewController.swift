@@ -75,29 +75,42 @@ final class LogInViewController: UIViewController {
             return false
         }
         
+        if loginView.loginTextField.text!.isValidEmail() == false
+            && loginView.loginTextField.text!.isValidPhone() == false {
+            loginView.loginTextField.shake()
+            callAlert()
+            return false
+        }
+        
         if loginView.passwordTextField.text == "" {
             loginView.passwordTextField.shake()
             return false
         }
         
-        if loginView.passwordTextField.text!.count < AppConstant.passMinLength ||
-           loginView.passwordTextField.text!.count > AppConstant.passMaxLength {
+        if loginView.passwordTextField.text!.count < AppConstant.passMinLength
+            || loginView.passwordTextField.text!.count > AppConstant.passMaxLength {
             loginView.warningLabel.isHidden = false
             return false
         }
         
-        guard loginView.passwordTextField.text == AppConstant.passwordValue || loginView.loginTextField.text == AppConstant.loginValue else {
-            let alert = UIAlertController(title: "Credentials incorrect", message: "Please check your login/password and try again", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "Ok", style: .default) {_ in
-                print("Ok clicked")
-            }
-            alert.addAction(alertAction)
-            present(alert, animated: true)
-            
+        guard loginView.passwordTextField.text == AppConstant.passwordValue
+                && (
+                    loginView.loginTextField.text == AppConstant.emailLoginValue
+                    || loginView.loginTextField.text == AppConstant.phoneLoginValue) else {
+            callAlert()
             return false
         }
         
         return true
+    }
+    
+    private func callAlert() {
+        let alert = UIAlertController(title: "Credentials incorrect", message: "Please check your login/password and try again", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Ok", style: .default) {_ in
+            print("Ok clicked")
+        }
+        alert.addAction(alertAction)
+        present(alert, animated: true)
     }
     
 }
