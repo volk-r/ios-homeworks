@@ -63,14 +63,15 @@ final class LogInViewController: UIViewController {
     }
     
     @objc private func buttonPressed() {
-        guard validation() == true else { return }
+        // TODO: disable validation until developmen ending
+//        guard validation() == true else { return }
         
         let profileVC = ProfileViewController()
         navigationController?.pushViewController(profileVC, animated: true)
     }
     
     private func validation() -> Bool {
-        if loginView.loginTextField.text == "" {
+        if loginView.loginTextField.text!.isEmpty {
             loginView.loginTextField.shake()
             return false
         }
@@ -82,7 +83,7 @@ final class LogInViewController: UIViewController {
             return false
         }
         
-        if loginView.passwordTextField.text == "" {
+        if loginView.passwordTextField.text!.isEmpty {
             loginView.passwordTextField.shake()
             return false
         }

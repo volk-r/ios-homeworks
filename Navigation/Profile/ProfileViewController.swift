@@ -9,7 +9,9 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    private let postModel: [PostModel] = PostModel.makePostModel()
+    private var postModel: [PostModel] = PostModel.makePostModel()
+    
+    private var profileHeaderView = ProfileHeaderView()
     
     private lazy var tableView: UITableView = {
         var tableView = UITableView(frame: .zero, style: .grouped)
@@ -59,7 +61,9 @@ extension ProfileViewController: UITableViewDataSource {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+        cell.postTableViewCellDelegate = self
         cell.setupCell(model: postModel[indexPath.row])
+        cell.setIndexPath(indexPath)
         
         return cell
     }
@@ -68,6 +72,14 @@ extension ProfileViewController: UITableViewDataSource {
         guard section == 0 else { return nil }
         
         return ProfileHeaderView()
+    }
+    
+}
+
+extension ProfileViewController: PostTableViewCellDelegate {
+    func doLike(indexPath: IndexPath) {
+        postModel[indexPath.row].likes += 1
+        tableView.reloadRows(at: [indexPath], with: .none)
     }
     
 }

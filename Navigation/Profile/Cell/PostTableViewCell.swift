@@ -7,7 +7,15 @@
 
 import UIKit
 
+protocol PostTableViewCellDelegate: AnyObject {
+    func doLike(indexPath: IndexPath)
+}
+
 class PostTableViewCell: UITableViewCell {
+    
+    weak var postTableViewCellDelegate: PostTableViewCellDelegate?
+    
+    private var indexPathCell = IndexPath()
 
     private let contentCellView: UIView = {
         var view = UIView()
@@ -47,6 +55,7 @@ class PostTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = .black
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -55,12 +64,27 @@ class PostTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = .black
+        label.isUserInteractionEnabled = true
         return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
+        addGesture()
+    }
+    
+    func setIndexPath(_ indexPath: IndexPath) {
+        indexPathCell = indexPath
+    }
+    
+    private func addGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(likePressed))
+        likeLabel.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func likePressed() {
+        postTableViewCellDelegate?.doLike(indexPath: indexPathCell)
     }
     
     required init?(coder: NSCoder) {
