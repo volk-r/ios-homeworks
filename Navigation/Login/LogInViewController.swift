@@ -59,12 +59,18 @@ final class LogInViewController: UIViewController {
     }
     
     @objc private func editing(_ sender: UITextField) {
-        sender.setDefaultBorder()
+        setDefaultBorder(sender)
+    }
+    
+    private func setDefaultBorder(_ sender: UITextField) {
+        sender.layer.borderColor = UIColor.lightGray.cgColor
+        sender.layer.borderWidth = 0.5
     }
     
     @objc private func buttonPressed() {
-        // TODO: disable validation until developmen ending
-//        guard validation() == true else { return }
+        // TODO:
+        #warning("disable validation until development ending")
+        guard validation() == true else { return }
         
         let profileVC = ProfileViewController()
         navigationController?.pushViewController(profileVC, animated: true)

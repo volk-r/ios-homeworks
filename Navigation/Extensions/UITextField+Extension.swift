@@ -32,9 +32,4 @@ extension UITextField {
         
         layer.add(animation, forKey: "shake")
     }
-    
-    func setDefaultBorder() {
-        layer.borderColor = UIColor.lightGray.cgColor
-        layer.borderWidth = 0.5
-    }
 }
