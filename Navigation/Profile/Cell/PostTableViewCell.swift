@@ -9,9 +9,10 @@ import UIKit
 
 protocol PostTableViewCellDelegate: AnyObject {
     func doLike(indexPath: IndexPath)
+    func openPostDetails(indexPath: IndexPath)
 }
 
-class PostTableViewCell: UITableViewCell {
+final class PostTableViewCell: UITableViewCell {
     
     weak var postTableViewCellDelegate: PostTableViewCellDelegate?
     
@@ -29,6 +30,7 @@ class PostTableViewCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .black
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -64,7 +66,6 @@ class PostTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = .black
-        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -81,10 +82,17 @@ class PostTableViewCell: UITableViewCell {
     private func addGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(likePressed))
         likeLabel.addGestureRecognizer(tapGesture)
+        
+        let postImageViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(postDetailsOpened))
+        postImageView.addGestureRecognizer(postImageViewTapGesture)
     }
     
     @objc private func likePressed() {
         postTableViewCellDelegate?.doLike(indexPath: indexPathCell)
+    }
+    
+    @objc private func postDetailsOpened() {
+        postTableViewCellDelegate?.openPostDetails(indexPath: indexPathCell)
     }
     
     required init?(coder: NSCoder) {

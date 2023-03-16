@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
     
     private var postModel: [PostModel] = PostModel.makePostModel()
     
@@ -77,6 +77,13 @@ extension ProfileViewController: UITableViewDataSource {
 }
 
 extension ProfileViewController: PostTableViewCellDelegate {
+    func openPostDetails(indexPath: IndexPath) {
+        postModel[indexPath.row].views += 1
+        tableView.reloadRows(at: [indexPath], with: .none)
+        let postDetailsVC = PostDetailsViewController(model: postModel[indexPath.row])
+        present(postDetailsVC, animated: true)
+    }
+    
     func doLike(indexPath: IndexPath) {
         postModel[indexPath.row].likes += 1
         tableView.reloadRows(at: [indexPath], with: .none)
