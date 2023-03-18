@@ -68,8 +68,6 @@ final class LogInViewController: UIViewController {
     }
     
     @objc private func buttonPressed() {
-        // TODO:
-        #warning("disable validation until development ending")
         guard validation() == true else { return }
         
         let profileVC = ProfileViewController()
