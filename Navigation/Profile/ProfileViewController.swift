@@ -45,6 +45,17 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            postModel.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 }
 
 extension ProfileViewController: UITableViewDataSource {
@@ -87,6 +98,7 @@ extension ProfileViewController: PostTableViewCellDelegate {
     func doLike(indexPath: IndexPath) {
         postModel[indexPath.row].likes += 1
         tableView.reloadRows(at: [indexPath], with: .none)
+        tableView.reloadData()
     }
     
 }
