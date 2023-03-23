@@ -59,6 +59,8 @@ final class LoginView: UIView {
         
         loginTextField.delegate = self
         
+        loginTextField.clearButtonMode = .whileEditing
+        
         return loginTextField
     }()
     
@@ -81,6 +83,8 @@ final class LoginView: UIView {
         passwordTextField.isSecureTextEntry = true
         
         passwordTextField.delegate = self
+        
+        passwordTextField.clearButtonMode = .whileEditing
         
         return passwordTextField
     }()
