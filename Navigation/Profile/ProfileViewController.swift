@@ -7,9 +7,11 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
     
-    private let postModel: [PostModel] = PostModel.makePostModel()
+    private var postModel: [PostModel] = PostModel.makePostModel()
+    
+    private var profileHeaderView = ProfileHeaderView()
     
     private lazy var tableView: UITableView = {
         var tableView = UITableView(frame: .zero, style: .grouped)
@@ -43,6 +45,17 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            postModel.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 }
 
 extension ProfileViewController: UITableViewDataSource {
@@ -59,7 +72,9 @@ extension ProfileViewController: UITableViewDataSource {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+        cell.postTableViewCellDelegate = self
         cell.setupCell(model: postModel[indexPath.row])
+        cell.setIndexPath(indexPath)
         
         return cell
     }
@@ -68,6 +83,22 @@ extension ProfileViewController: UITableViewDataSource {
         guard section == 0 else { return nil }
         
         return ProfileHeaderView()
+    }
+    
+}
+
+extension ProfileViewController: PostTableViewCellDelegate {
+    func openPostDetails(indexPath: IndexPath) {
+        postModel[indexPath.row].views += 1
+        tableView.reloadRows(at: [indexPath], with: .none)
+        let postDetailsVC = PostDetailsViewController(model: postModel[indexPath.row])
+        present(postDetailsVC, animated: true)
+    }
+    
+    func doLike(indexPath: IndexPath) {
+        postModel[indexPath.row].likes += 1
+        tableView.reloadRows(at: [indexPath], with: .none)
+        tableView.reloadData()
     }
     
 }

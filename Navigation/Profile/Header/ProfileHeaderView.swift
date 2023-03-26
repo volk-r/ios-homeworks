@@ -112,6 +112,7 @@ class ProfileHeaderView: UIView {
         super.init(frame: .zero)
         backgroundColor = .systemGray4
         
+        textField.addTarget(self, action: #selector(editing), for: .editingDidBegin)
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         
         setupButton()
@@ -125,7 +126,17 @@ class ProfileHeaderView: UIView {
     }
     
     @objc func statusTextChanged(_ textField: UITextField) {
+        setTextFieldDefaultBorder()
         statusText = textField.text!
+    }
+    
+    @objc func editing() {
+        setTextFieldDefaultBorder()
+    }
+    
+    private func setTextFieldDefaultBorder() {
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.borderWidth = 1
     }
     
     private func setupLayout() {
@@ -183,8 +194,13 @@ class ProfileHeaderView: UIView {
     }
     
     @objc func buttonPressed() {
+        if textField.text!.isEmpty {
+            textField.shake()
+            return
+        }
+        
+        print(statusLabel.text!)
         statusLabel.text = statusText
-        print(statusLabel.text ?? "")
         textField.text?.removeAll()
     }
     

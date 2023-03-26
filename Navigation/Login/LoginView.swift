@@ -39,7 +39,7 @@ final class LoginView: UIView {
         return logoImageView
     }()
     
-    private lazy var loginTextField: UITextField = {
+    lazy var loginTextField: UITextField = {
         let loginTextField = UITextField()
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
         loginTextField.placeholder = "Email or phone"
@@ -59,10 +59,12 @@ final class LoginView: UIView {
         
         loginTextField.delegate = self
         
+        loginTextField.clearButtonMode = .whileEditing
+        
         return loginTextField
     }()
     
-    private lazy var passwordTextField: UITextField = {
+    lazy var passwordTextField: UITextField = {
         let passwordTextField = UITextField()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholder = "Password"
@@ -82,7 +84,20 @@ final class LoginView: UIView {
         
         passwordTextField.delegate = self
         
+        passwordTextField.clearButtonMode = .whileEditing
+        
         return passwordTextField
+    }()
+    
+    let warningLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 12, weight: .bold)
+        label.text = "Password should be \(AppConstant.passMinLength) to \(AppConstant.passMaxLength) characters long"
+        label.textColor = .red
+        label.isHidden = true
+        
+        return label
     }()
     
     private (set) var loginButton: UIButton = {
@@ -133,6 +148,7 @@ final class LoginView: UIView {
         contentView.addSubview(logoImageView)
         contentView.addSubview(loginTextField)
         contentView.addSubview(passwordTextField)
+        contentView.addSubview(warningLabel)
         contentView.addSubview(loginButton)
         
         NSLayoutConstraint.activate([
@@ -161,6 +177,10 @@ final class LoginView: UIView {
             passwordTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             passwordTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             passwordTextField.heightAnchor.constraint(equalToConstant: 50),
+            
+            warningLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor),
+            warningLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            warningLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
             loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 16),
             loginButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
@@ -196,23 +216,10 @@ final class LoginView: UIView {
 extension LoginView: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        layer.borderColor = UIColor.lightGray.cgColor
+        layer.borderWidth = 0.5
         endEditing(true)
         
         return true
-    }
-}
-
-extension UITextField {
-    
-    func setLeftPaddingPoints(_ amount:CGFloat){
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-        self.leftView = paddingView
-        self.leftViewMode = .always
-    }
-    
-    func setRightPaddingPoints(_ amount:CGFloat) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-        self.rightView = paddingView
-        self.rightViewMode = .always
     }
 }

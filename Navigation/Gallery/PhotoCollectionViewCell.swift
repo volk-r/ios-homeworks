@@ -7,13 +7,22 @@
 
 import UIKit
 
+protocol PhotoCollectionViewCellDelegate: AnyObject {
+    func didTapImageInCell(_ image: UIImage?, frameImage: CGRect, indexPath: IndexPath)
+}
+
 final class PhotoCollectionViewCell: UICollectionViewCell {
+    
+    weak var delegate: PhotoCollectionViewCellDelegate?
+    
+    private var indexPathCell = IndexPath()
     
     var cellImageView: UIImageView = {
         var imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -29,9 +38,23 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
+    func setIndexPath(_ indexPath: IndexPath) {
+        indexPathCell = indexPath
+    }
+    
     func setupCell(imageName: String) {
         cellImageView.image = UIImage(named: imageName)!
         layout()
+        addGesture()
+    }
+    
+    private func addGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        cellImageView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func tapAction() {
+        delegate?.didTapImageInCell(cellImageView.image, frameImage: cellImageView.frame, indexPath: indexPathCell)
     }
     
     func setupHorizontalCell(imageName: String) {
