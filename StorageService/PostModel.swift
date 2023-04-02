@@ -7,14 +7,14 @@
 
 import UIKit
 
-struct PostModel {
-    var author: String
-    var description: String
-    var image: String
-    var likes: Int
-    var views: Int
+public struct PostModel {
+    public var author: String
+    public var description: String
+    public var image: String
+    public var likes: Int
+    public var views: Int
     
-    static func makePostModel() -> [PostModel] {
+    public static func makePostModel() -> [PostModel] {
         var model = [PostModel]()
         model.append(PostModel(author: "Лингвини | Слова и Речь", description: "Вжик. Нет, речь, конечно же, не о персонаже мультфильма «Чип и Дейл спешат на помощь». Так в Хабаровском крае зовут обычного овода. А прозвали его так за то, что он гоняет летом коров и скотину: «вжик под хвост попал»!", image: "Post_1", likes: 89, views: 100))
         model.append(PostModel(author: "Лингвини | Слова и Речь", description: "ХодАтайство или ходатАйство? Как правильно? Ходатайство — документ, содержащий просьбу о чём-либо, представление с целью добиться чего-либо. В издании «Русское словесное ударение» М.В. Зарвы отмечено, что корректным употреблением существительного является «ходАтайство», отдельно указано: «не ходатАйство». Слово с ударением на третий слог можно считать профессиональным жаргоном в юридической среде, но факт остаётся фактом: правильно говорить только ходАтайство.", image: "Post_2", likes: 300, views: 498))

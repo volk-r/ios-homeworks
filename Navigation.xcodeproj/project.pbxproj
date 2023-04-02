@@ -20,9 +20,12 @@
 		3C65F05429A75FB200996373 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C65F05329A75FB200996373 /* PhotosViewController.swift */; };
 		3C65F05629A7772800996373 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C65F05529A7772800996373 /* PhotoCollectionViewCell.swift */; };
 		3C7D5BD329AF05FC002E6A23 /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7D5BD229AF05FC002E6A23 /* Metric.swift */; };
+		3C8005C129D869CC00FD743E /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C8005C029D869CC00FD743E /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C8005C429D869CC00FD743E /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8005BE29D869CC00FD743E /* StorageService.framework */; };
+		3C8005C529D869CC00FD743E /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8005BE29D869CC00FD743E /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C8005CA29D869D700FD743E /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA75A2329A1421C00743167 /* PostModel.swift */; };
 		3C9B1969298D893500555016 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9B1968298D893500555016 /* PostViewController.swift */; };
 		3C9B196B298E448E00555016 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9B196A298E448E00555016 /* InfoViewController.swift */; };
-		3CA75A2429A1421C00743167 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA75A2329A1421C00743167 /* PostModel.swift */; };
 		3CA75A2629A14B1700743167 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA75A2529A14B1700743167 /* UIView+Extension.swift */; };
 		3CA75A2829A14E6500743167 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA75A2729A14E6500743167 /* PostTableViewCell.swift */; };
 		3CD0419D29C0E33000B62736 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD0419C29C0E33000B62736 /* String+Extension.swift */; };
@@ -34,6 +37,30 @@
 		3CD53A49298D770500B826F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CD53A47298D770500B826F7 /* LaunchScreen.storyboard */; };
 		3CF010142998D98A00D4924A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF010132998D98900D4924A /* Post.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3C8005C229D869CC00FD743E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CD53A31298D770300B826F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C8005BD29D869CC00FD743E;
+			remoteInfo = StorageService;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3C8005C629D869CC00FD743E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3C8005C529D869CC00FD743E /* StorageService.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3C0C454D299571060093AE40 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +76,8 @@
 		3C65F05329A75FB200996373 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		3C65F05529A7772800996373 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		3C7D5BD229AF05FC002E6A23 /* Metric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metric.swift; sourceTree = "<group>"; };
+		3C8005BE29D869CC00FD743E /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C8005C029D869CC00FD743E /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		3C9B1968298D893500555016 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		3C9B196A298E448E00555016 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		3CA75A2329A1421C00743167 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
@@ -67,10 +96,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3C8005BB29D869CC00FD743E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3CD53A36298D770300B826F7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C8005C429D869CC00FD743E /* StorageService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +140,15 @@
 				3C7D5BD229AF05FC002E6A23 /* Metric.swift */,
 			);
 			path = Metrics;
+			sourceTree = "<group>";
+		};
+		3C8005BF29D869CC00FD743E /* StorageService */ = {
+			isa = PBXGroup;
+			children = (
+				3CA75A2329A1421C00743167 /* PostModel.swift */,
+				3C8005C029D869CC00FD743E /* StorageService.h */,
+			);
+			path = StorageService;
 			sourceTree = "<group>";
 		};
 		3CA75A2929A14FF500743167 /* Login */ = {
@@ -155,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				3CD53A3B298D770300B826F7 /* Navigation */,
+				3C8005BF29D869CC00FD743E /* StorageService */,
 				3CD53A3A298D770300B826F7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -163,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				3CD53A39298D770300B826F7 /* Navigation.app */,
+				3C8005BE29D869CC00FD743E /* StorageService.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,14 +242,42 @@
 			children = (
 				3CF010132998D98900D4924A /* Post.swift */,
 				3C445D2629A780E50004FBCE /* GalleryImages.swift */,
-				3CA75A2329A1421C00743167 /* PostModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		3C8005B929D869CC00FD743E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C8005C129D869CC00FD743E /* StorageService.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		3C8005BD29D869CC00FD743E /* StorageService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C8005C929D869CC00FD743E /* Build configuration list for PBXNativeTarget "StorageService" */;
+			buildPhases = (
+				3C8005B929D869CC00FD743E /* Headers */,
+				3C8005BA29D869CC00FD743E /* Sources */,
+				3C8005BB29D869CC00FD743E /* Frameworks */,
+				3C8005BC29D869CC00FD743E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StorageService;
+			productName = StorageService;
+			productReference = 3C8005BE29D869CC00FD743E /* StorageService.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		3CD53A38298D770300B826F7 /* Navigation */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CD53A4D298D770500B826F7 /* Build configuration list for PBXNativeTarget "Navigation" */;
@@ -209,10 +285,12 @@
 				3CD53A35298D770300B826F7 /* Sources */,
 				3CD53A36298D770300B826F7 /* Frameworks */,
 				3CD53A37298D770300B826F7 /* Resources */,
+				3C8005C629D869CC00FD743E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3C8005C329D869CC00FD743E /* PBXTargetDependency */,
 			);
 			name = Navigation;
 			productName = Navigation;
@@ -229,6 +307,9 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					3C8005BD29D869CC00FD743E = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					3CD53A38298D770300B826F7 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -248,11 +329,19 @@
 			projectRoot = "";
 			targets = (
 				3CD53A38298D770300B826F7 /* Navigation */,
+				3C8005BD29D869CC00FD743E /* StorageService */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3C8005BC29D869CC00FD743E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3CD53A37298D770300B826F7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -265,6 +354,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3C8005BA29D869CC00FD743E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C8005CA29D869D700FD743E /* PostModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3CD53A35298D770300B826F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -286,7 +383,6 @@
 				3CD041A029C38C3400B62736 /* PostDetaisView.swift in Sources */,
 				3C65F05629A7772800996373 /* PhotoCollectionViewCell.swift in Sources */,
 				3C65F05429A75FB200996373 /* PhotosViewController.swift in Sources */,
-				3CA75A2429A1421C00743167 /* PostModel.swift in Sources */,
 				3C0C4550299571770093AE40 /* ProfileHeaderView.swift in Sources */,
 				3C9B196B298E448E00555016 /* InfoViewController.swift in Sources */,
 				3C193E68299EAC5B00B7E87C /* LoginView.swift in Sources */,
@@ -297,6 +393,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3C8005C329D869CC00FD743E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C8005BD29D869CC00FD743E /* StorageService */;
+			targetProxy = 3C8005C229D869CC00FD743E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3CD53A47298D770500B826F7 /* LaunchScreen.storyboard */ = {
@@ -310,6 +414,72 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3C8005C729D869CC00FD743E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = "Netology-education.StorageService";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3C8005C829D869CC00FD743E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = "Netology-education.StorageService";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		3CD53A4B298D770500B826F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -427,6 +597,7 @@
 		3CD53A4E298D770500B826F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -453,6 +624,7 @@
 		3CD53A4F298D770500B826F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -479,6 +651,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3C8005C929D869CC00FD743E /* Build configuration list for PBXNativeTarget "StorageService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C8005C729D869CC00FD743E /* Debug */,
+				3C8005C829D869CC00FD743E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3CD53A34298D770300B826F7 /* Build configuration list for PBXProject "Navigation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

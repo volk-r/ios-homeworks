@@ -110,7 +110,11 @@ class ProfileHeaderView: UIView {
     
     init() {
         super.init(frame: .zero)
+        #if DEBUG
+        backgroundColor = .green
+        #else
         backgroundColor = .systemGray4
+        #endif
         
         textField.addTarget(self, action: #selector(editing), for: .editingDidBegin)
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StorageService
 
 protocol PostTableViewCellDelegate: AnyObject {
     func doLike(indexPath: IndexPath)
