@@ -9,6 +9,12 @@ import UIKit
 
 final class LogInViewController: UIViewController {
     
+    #if DEBUG
+    private var currentUserService = TestUserService()
+    #else
+    private var currentUserService = CurrentUserService()
+    #endif
+    
     private let notification = NotificationCenter.default
     private let loginView = LoginView()
     
@@ -68,10 +74,7 @@ final class LogInViewController: UIViewController {
     }
     
     @objc private func buttonPressed() {
-        guard validation() == true else { return }
-        
-        let profileVC = ProfileViewController()
-        navigationController?.pushViewController(profileVC, animated: true)
+        validation()
     }
     
     private func validation() -> Bool {
@@ -98,13 +101,19 @@ final class LogInViewController: UIViewController {
             return false
         }
         
+        let user = currentUserService.getUserByLogin(loginView.loginTextField.text!)
+        
         guard loginView.passwordTextField.text == AppConstant.passwordValue
                 && (
-                    loginView.loginTextField.text == AppConstant.emailLoginValue
-                    || loginView.loginTextField.text == AppConstant.phoneLoginValue) else {
+                    loginView.loginTextField.text == user?.getLoginEmail()
+                    || loginView.loginTextField.text == user?.getLoginPhone()) else {
             callAlert()
             return false
         }
+        
+        let profileVC = ProfileViewController()
+        profileVC.user = user
+        navigationController?.pushViewController(profileVC, animated: true)
         
         return true
     }

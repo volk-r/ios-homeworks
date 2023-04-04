@@ -10,6 +10,8 @@ import StorageService
 
 final class ProfileViewController: UIViewController {
     
+    var user: User?
+    
     private var postModel: [PostModel] = PostModel.makePostModel()
     
     private var profileHeaderView = ProfileHeaderView()
@@ -82,8 +84,9 @@ extension ProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard section == 0 else { return nil }
-        
-        return ProfileHeaderView()
+        let profileHeaderView = ProfileHeaderView()
+        profileHeaderView.setupUser(user)
+        return profileHeaderView
     }
     
 }

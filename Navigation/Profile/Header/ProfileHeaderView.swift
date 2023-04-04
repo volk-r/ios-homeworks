@@ -263,4 +263,12 @@ class ProfileHeaderView: UIView {
             }
         }
     }
+    
+    func setupUser(_ user: User?) {
+        guard user != nil else { return }
+        
+        self.avatarImageView.image = user?.getAvatar()
+        self.nameLabel.text = user?.getName()
+        self.statusLabel.text = user?.getStatus()
+    }
 }
