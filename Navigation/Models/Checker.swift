@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol LoginViewControllerDelegate: AnyObject {
-    func check()
-}
-
 final class Checker {
     static let shared = Checker()
     
@@ -21,8 +17,6 @@ final class Checker {
     private init() {}
     
     func check(login: String, password: String) -> Bool {
-        print("login -> \(self.email) | \(self.phone)")
-        print("password -> \(self.password)")
         guard login == self.email || login == self.phone else { print("login mismath"); return false }
         guard password == self.password else { print("passwotd mismath"); return false }
         

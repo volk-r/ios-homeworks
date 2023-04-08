@@ -27,6 +27,7 @@ final class MainTabBarViewController: UITabBarController {
         
         loginVC.tabBarItem.title = "Профиль"
         loginVC.tabBarItem.image = UIImage(systemName: "person.fill")
+        loginVC.loginDelegate = LoginInspector()
 
         viewControllers = [navigationControllerFeed, navigationControllerLogin]
     }

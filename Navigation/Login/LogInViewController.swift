@@ -7,6 +7,16 @@
 
 import UIKit
 
+struct LoginInspector: LoginViewControllerDelegate {
+    func check(login: String, password: String) -> Bool {
+        return Checker.shared.check(login: login, password: password)
+    }
+}
+
+protocol LoginViewControllerDelegate {
+    func check(login: String, password: String) -> Bool
+}
+
 final class LogInViewController: UIViewController {
     
     #if DEBUG
@@ -18,7 +28,7 @@ final class LogInViewController: UIViewController {
     private let notification = NotificationCenter.default
     private let loginView = LoginView()
     
-    private var loginDelegate: LoginViewControllerDelegate?
+    var loginDelegate: LoginViewControllerDelegate?
     
     override func loadView() {
         super.loadView()
@@ -89,42 +99,38 @@ final class LogInViewController: UIViewController {
             loginView.loginTextField.shake()
             return false
         }
-        
+
         if loginView.loginTextField.text!.isValidEmail() == false
             && loginView.loginTextField.text!.isValidPhone() == false {
             loginView.loginTextField.shake()
             callAlert()
             return false
         }
-        
+
         if loginView.passwordTextField.text!.isEmpty {
             loginView.passwordTextField.shake()
             return false
         }
-        
+
         if loginView.passwordTextField.text!.count < AppConstant.passMinLength
             || loginView.passwordTextField.text!.count > AppConstant.passMaxLength {
             loginView.warningLabel.isHidden = false
             return false
         }
         
-        let user = currentUserService.getUserByLogin(loginView.loginTextField.text!)
-        
-//        guard loginDelegate?.check(
-//            login: loginView.loginTextField.text!,
-//            password: loginView.passwordTextField.text!
-//        ) == true else {
-//            callAlert()
-//            return false
-//        }
-        
-        guard loginView.passwordTextField.text == AppConstant.passwordValue
-                && (
-                    loginView.loginTextField.text == user?.getLoginEmail()
-                    || loginView.loginTextField.text == user?.getLoginPhone()) else {
+        guard loginDelegate?.check(login: loginView.loginTextField.text!, password: loginView.passwordTextField.text!) == true else {
             callAlert()
             return false
         }
+        
+        let user = currentUserService.getUserByLogin(loginView.loginTextField.text!)
+//        guard loginView.passwordTextField.text == AppConstant.passwordValue
+//                && (
+//                    loginView.loginTextField.text == user?.getLoginEmail()
+//                    || loginView.loginTextField.text == user?.getLoginPhone()) else {
+//            callAlert()
+//            return false
+//        }
         
         let profileVC = ProfileViewController()
         profileVC.user = user
