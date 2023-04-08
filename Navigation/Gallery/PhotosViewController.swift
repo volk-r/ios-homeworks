@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import iOSIntPackage
 
 final class PhotosViewController: UIViewController {
     
@@ -13,6 +14,12 @@ final class PhotosViewController: UIViewController {
     
     private var photoCollectionViewCell =  PhotoCollectionViewCell()
     private var initialImageRect: CGRect = .zero
+    
+    private var publisher: ImagePublisherFacade? {
+        didSet {
+            publisher?.subscribe(<#T##subscriber: ImageLibrarySubscriber##ImageLibrarySubscriber#>)
+        }
+    }
     
     private let whiteView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
@@ -56,6 +63,9 @@ final class PhotosViewController: UIViewController {
         super.viewDidLoad()
         layout()
         setupCollectionView()
+        
+        let facade = ImagePublisherFacade()
+        publisher = facade
     }
     
     @objc private func crossButtonAction() {
@@ -116,6 +126,13 @@ final class PhotosViewController: UIViewController {
         }
     }
 
+}
+
+extension PhotosViewController: ImageLibrarySubscriber {
+    func receive(images: [UIImage]) {
+        publisher?.addImagesWithTimer(time: 0.5, repeat: 20)
+    }
+    
 }
 
 extension PhotosViewController: UICollectionViewDataSource {
