@@ -15,33 +15,26 @@ final class LoginView: UIView {
 
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return scrollView
+        return scrollView.autoLayout()
     }()
     
     private let contentView: UIView = {
         let contentView = UIView()
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return contentView
+        return contentView.autoLayout()
     }()
     
     private let logoImageView: UIImageView = {
         let logoImage = UIImage(named: "logo")
         let logoImageView = UIImageView(image: logoImage!)
-    
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
         
         logoImageView.clipsToBounds = true
         logoImageView.contentMode = .scaleAspectFill
         
-        return logoImageView
+        return logoImageView.autoLayout()
     }()
     
     lazy var loginTextField: UITextField = {
         let loginTextField = UITextField()
-        loginTextField.translatesAutoresizingMaskIntoConstraints = false
         loginTextField.placeholder = "Email or phone"
         loginTextField.setLeftPaddingPoints(10)
         
@@ -61,12 +54,11 @@ final class LoginView: UIView {
         
         loginTextField.clearButtonMode = .whileEditing
         
-        return loginTextField
+        return loginTextField.autoLayout()
     }()
     
     lazy var passwordTextField: UITextField = {
         let passwordTextField = UITextField()
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholder = "Password"
         passwordTextField.setLeftPaddingPoints(10)
         
@@ -86,23 +78,21 @@ final class LoginView: UIView {
         
         passwordTextField.clearButtonMode = .whileEditing
         
-        return passwordTextField
+        return passwordTextField.autoLayout()
     }()
     
     let warningLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 12, weight: .bold)
         label.text = "Password should be \(AppConstant.passMinLength) to \(AppConstant.passMaxLength) characters long"
         label.textColor = .red
         label.isHidden = true
         
-        return label
+        return label.autoLayout()
     }()
     
     private (set) var loginButton: UIButton = {
         let loginButton = UIButton()
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
         
         loginButton.setTitle("Log in", for: .normal)
         loginButton.tintColor = .white
@@ -111,7 +101,7 @@ final class LoginView: UIView {
         loginButton.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
         loginButton.layer.masksToBounds = true
         
-        return loginButton
+        return loginButton.autoLayout()
     }()
     
     func checkLoginButtonStates() {

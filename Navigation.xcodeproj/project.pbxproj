@@ -36,6 +36,7 @@
 		3CD53A41298D770300B826F7 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD53A40298D770300B826F7 /* FeedViewController.swift */; };
 		3CD53A46298D770500B826F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CD53A45298D770500B826F7 /* Assets.xcassets */; };
 		3CD53A49298D770500B826F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CD53A47298D770500B826F7 /* LaunchScreen.storyboard */; };
+		3CD7091F29E1B14B0009BCAF /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD7091E29E1B14B0009BCAF /* Checker.swift */; };
 		3CF010142998D98A00D4924A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF010132998D98900D4924A /* Post.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		3CD53A45298D770500B826F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3CD53A48298D770500B826F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3CD53A4A298D770500B826F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CD7091E29E1B14B0009BCAF /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		3CF010132998D98900D4924A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -245,6 +247,7 @@
 				3CF010132998D98900D4924A /* Post.swift */,
 				3C445D2629A780E50004FBCE /* GalleryImages.swift */,
 				3C5D96C729DCA3000001AF54 /* UserServiceData.swift */,
+				3CD7091E29E1B14B0009BCAF /* Checker.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				3C7D5BD329AF05FC002E6A23 /* Metric.swift in Sources */,
 				3CD0419D29C0E33000B62736 /* String+Extension.swift in Sources */,
 				3C144BA829BF9DB7004DFFE6 /* AppConstant.swift in Sources */,
+				3CD7091F29E1B14B0009BCAF /* Checker.swift in Sources */,
 				3CF010142998D98A00D4924A /* Post.swift in Sources */,
 				3C445D2729A780E50004FBCE /* GalleryImages.swift in Sources */,
 				3C0C454E299571060093AE40 /* ProfileViewController.swift in Sources */,

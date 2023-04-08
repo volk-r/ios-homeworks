@@ -18,6 +18,8 @@ final class LogInViewController: UIViewController {
     private let notification = NotificationCenter.default
     private let loginView = LoginView()
     
+    private var loginDelegate: LoginViewControllerDelegate?
+    
     override func loadView() {
         super.loadView()
         view = loginView
@@ -74,7 +76,12 @@ final class LogInViewController: UIViewController {
     }
     
     @objc private func buttonPressed() {
-        validation()
+        if (validation()) {
+            print("go to profile")
+            return
+        }
+        
+        print("something went wrong")
     }
     
     private func validation() -> Bool {
@@ -102,6 +109,14 @@ final class LogInViewController: UIViewController {
         }
         
         let user = currentUserService.getUserByLogin(loginView.loginTextField.text!)
+        
+//        guard loginDelegate?.check(
+//            login: loginView.loginTextField.text!,
+//            password: loginView.passwordTextField.text!
+//        ) == true else {
+//            callAlert()
+//            return false
+//        }
         
         guard loginView.passwordTextField.text == AppConstant.passwordValue
                 && (

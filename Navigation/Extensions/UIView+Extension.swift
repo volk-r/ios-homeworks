@@ -11,4 +11,9 @@ extension UIView {
     static var identifier: String {
         String(describing: self)
     }
+    
+    func autoLayout() -> Self {
+        translatesAutoresizingMaskIntoConstraints = false
+        return self
+    }
 }
