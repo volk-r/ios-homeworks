@@ -17,7 +17,8 @@ final class PhotosViewController: UIViewController {
     
     private var publisher: ImagePublisherFacade? {
         didSet {
-            publisher?.subscribe(<#T##subscriber: ImageLibrarySubscriber##ImageLibrarySubscriber#>)
+            // TODO: - 
+//            publisher?.subscribe(<#T##subscriber: ImageLibrarySubscriber##ImageLibrarySubscriber#>)
         }
     }
     
@@ -130,6 +131,7 @@ final class PhotosViewController: UIViewController {
 
 extension PhotosViewController: ImageLibrarySubscriber {
     func receive(images: [UIImage]) {
+        // TODO: -
         publisher?.addImagesWithTimer(time: 0.5, repeat: 20)
     }
     
