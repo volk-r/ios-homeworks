@@ -7,6 +7,7 @@
 
 import UIKit
 import StorageService
+import iOSIntPackage
 
 protocol PostTableViewCellDelegate: AnyObject {
     func doLike(indexPath: IndexPath)
@@ -111,7 +112,10 @@ final class PostTableViewCell: UITableViewCell {
     
     func setupCell(model: PostModel) {
         authorLabel.text = model.author
-        postImageView.image = UIImage(named: model.image)!
+        let imageProcessor = ImageProcessor()
+        imageProcessor.processImage(sourceImage: UIImage(named: model.image)!, filter: .colorInvert) { image in
+            postImageView.image = image
+        }
         descriptionLabel.text = model.description
         likeLabel.text = "Likes: \(model.likes)"
         viewLabel.text = "Views: \(model.views)"

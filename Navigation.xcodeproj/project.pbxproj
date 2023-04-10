@@ -26,6 +26,7 @@
 		3C8005C429D869CC00FD743E /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8005BE29D869CC00FD743E /* StorageService.framework */; };
 		3C8005C529D869CC00FD743E /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8005BE29D869CC00FD743E /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C8005CA29D869D700FD743E /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA75A2329A1421C00743167 /* PostModel.swift */; };
+		3C8599C329D9F9C300816D79 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8599C229D9F9C300816D79 /* iOSIntPackage */; };
 		3C9B1969298D893500555016 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9B1968298D893500555016 /* PostViewController.swift */; };
 		3C9B196B298E448E00555016 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9B196A298E448E00555016 /* InfoViewController.swift */; };
 		3CA75A2629A14B1700743167 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA75A2529A14B1700743167 /* UIView+Extension.swift */; };
@@ -319,7 +320,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					3C8005BD29D869CC00FD743E = {
 						CreatedOnToolsVersion = 14.3;
@@ -437,6 +438,7 @@
 		3C8005C729D869CC00FD743E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -470,6 +472,7 @@
 		3C8005C829D869CC00FD743E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
