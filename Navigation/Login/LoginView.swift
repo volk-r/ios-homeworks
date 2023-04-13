@@ -92,11 +92,7 @@ final class LoginView: UIView {
     }()
     
     private (set) var loginButton: UIButton = {
-        let loginButton = UIButton()
-        
-        loginButton.setTitle("Log in", for: .normal)
-        loginButton.tintColor = .white
-        
+        let loginButton = CustomButton(title: "Log in", titleColor: .white)
         loginButton.layer.cornerRadius = 10
         loginButton.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
         loginButton.layer.masksToBounds = true

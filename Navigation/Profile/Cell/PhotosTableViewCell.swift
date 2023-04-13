@@ -15,30 +15,27 @@ final class PhotosTableViewCell: UITableViewCell {
 
     private let contentCellView: UIView = {
         var view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         
-        return view
+        return view.autoLayout()
     }()
     
     let cellHeaderLabel: UILabel = {
         var label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = .black
         label.text = "Photos"
         
-        return label
+        return label.autoLayout()
     }()
     
     private let galleryButton: UIButton = {
         var button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         let image = UIImage(systemName: "arrow.forward")
         button.setBackgroundImage(image, for: .normal)
         button.tintColor = .black
         
-        return button
+        return button.autoLayout()
     }()
     
     private lazy var horizontalCollectionView: UICollectionView = {
@@ -46,10 +43,9 @@ final class PhotosTableViewCell: UITableViewCell {
         layout.scrollDirection = .horizontal
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
         
-        return collectionView
+        return collectionView.autoLayout()
     }()
     
     // MARK: - layout

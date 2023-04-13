@@ -10,6 +10,7 @@
 		3C0C454E299571060093AE40 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0C454D299571060093AE40 /* ProfileViewController.swift */; };
 		3C0C4550299571770093AE40 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0C454F299571770093AE40 /* ProfileHeaderView.swift */; };
 		3C0ED57F29E472E100CCC2BE /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 3C0ED57E29E472E100CCC2BE /* iOSIntPackage */; };
+		3C0ED58129E8726500CCC2BE /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0ED58029E8726500CCC2BE /* CustomButton.swift */; };
 		3C144BA629BF8E3D004DFFE6 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C144BA529BF8E3D004DFFE6 /* UITextField+Extension.swift */; };
 		3C144BA829BF9DB7004DFFE6 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C144BA729BF9DB7004DFFE6 /* AppConstant.swift */; };
 		3C193E66299EA80000B7E87C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C193E65299EA80000B7E87C /* LogInViewController.swift */; };
@@ -26,7 +27,6 @@
 		3C8005C429D869CC00FD743E /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8005BE29D869CC00FD743E /* StorageService.framework */; };
 		3C8005C529D869CC00FD743E /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8005BE29D869CC00FD743E /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3C8005CA29D869D700FD743E /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA75A2329A1421C00743167 /* PostModel.swift */; };
-		3C8599C329D9F9C300816D79 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 3C8599C229D9F9C300816D79 /* iOSIntPackage */; };
 		3C9B1969298D893500555016 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9B1968298D893500555016 /* PostViewController.swift */; };
 		3C9B196B298E448E00555016 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9B196A298E448E00555016 /* InfoViewController.swift */; };
 		3CA75A2629A14B1700743167 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA75A2529A14B1700743167 /* UIView+Extension.swift */; };
@@ -70,6 +70,7 @@
 /* Begin PBXFileReference section */
 		3C0C454D299571060093AE40 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3C0C454F299571770093AE40 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		3C0ED58029E8726500CCC2BE /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		3C144BA529BF8E3D004DFFE6 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		3C144BA729BF9DB7004DFFE6 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 		3C193E65299EA80000B7E87C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +194,7 @@
 				3C445D2829A7A7060004FBCE /* UIViewController+Extansion.swift */,
 				3C144BA529BF8E3D004DFFE6 /* UITextField+Extension.swift */,
 				3CD0419C29C0E33000B62736 /* String+Extension.swift */,
+				3C0ED58029E8726500CCC2BE /* CustomButton.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -386,6 +388,7 @@
 			files = (
 				3CD7092129E1D66C0009BCAF /* LoginFactory.swift in Sources */,
 				3CA75A2629A14B1700743167 /* UIView+Extension.swift in Sources */,
+				3C0ED58129E8726500CCC2BE /* CustomButton.swift in Sources */,
 				3C338214298D82BE00140824 /* MainTabBarViewController.swift in Sources */,
 				3CD53A41298D770300B826F7 /* FeedViewController.swift in Sources */,
 				3CA75A2829A14E6500743167 /* PostTableViewCell.swift in Sources */,

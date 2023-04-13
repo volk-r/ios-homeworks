@@ -17,7 +17,7 @@ final class PhotosViewController: UIViewController {
     
     private var publisher: ImagePublisherFacade? {
         didSet {
-            // TODO: - 
+            // TODO: -
 //            publisher?.subscribe(<#T##subscriber: ImageLibrarySubscriber##ImageLibrarySubscriber#>)
         }
     }

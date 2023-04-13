@@ -16,30 +16,26 @@ class ProfileHeaderView: UIView {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.text = "Junior iOS developer"
         
-        return label
+        return label.autoLayout()
     }()
     
     private let statusLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.text = "Waiting for something..."
         label.textColor = .gray
         
-        return label
+        return label.autoLayout()
     }()
     
     let avatarImageView: UIImageView = {
         let image = UIImage(named: "avatar")
         let imageView = UIImageView(image: image!)
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         
         imageView.layer.cornerRadius = 61
         imageView.layer.borderColor = UIColor.white.cgColor
@@ -50,37 +46,31 @@ class ProfileHeaderView: UIView {
         
         imageView.isUserInteractionEnabled = true
 
-        return imageView
+        return imageView.autoLayout()
     }()
     
     let avatarImageViewForAnimation: UIImageView = {
         let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         view.alpha = 0.0
-        return view
+        return view.autoLayout()
     }()
     
     private lazy var closeAvatarButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         let image = UIImage(systemName: "xmark.circle.fill")
         button.setImage(image, for: .normal)
         button.tintColor = .black
         button.alpha = 0.0
         button.addTarget(self, action: #selector(closeAvatar), for: .touchUpInside)
         
-        return button
+        return button.autoLayout()
     }()
     
-    private let statusButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var statusButton: UIButton = {
+        let button = CustomButton(title: "Show status", titleColor: .white)
         
-        button.setTitle("Show status", for: .normal)
         button.backgroundColor = .systemBlue
-        button.tintColor = .white
-        
         button.layer.cornerRadius = 10
         
         button.layer.shadowOffset = .init(width: 7, height: 7)
@@ -88,12 +78,23 @@ class ProfileHeaderView: UIView {
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         
-        return button
+        button.buttonAction = {
+            print("Кастомная кнопка нажата")
+            if self.textField.text!.isEmpty {
+                self.textField.shake()
+                return
+            }
+            
+            print(self.statusLabel.text!)
+            self.statusLabel.text = self.statusText
+            self.textField.text?.removeAll()
+        }
+        
+        return button.autoLayout()
     }()
     
     private lazy var textField: UITextField = {
         let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.borderStyle = .roundedRect
         textField.placeholder = "Set new status"
         
@@ -105,7 +106,7 @@ class ProfileHeaderView: UIView {
         textField.font = .systemFont(ofSize: 15, weight: .regular)
         textField.clipsToBounds = true
         
-        return textField
+        return textField.autoLayout()
     }()
     
     init() {
@@ -119,7 +120,6 @@ class ProfileHeaderView: UIView {
         textField.addTarget(self, action: #selector(editing), for: .editingDidBegin)
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         
-        setupButton()
         setupLayout()
         
         setupGesture()
@@ -191,21 +191,6 @@ class ProfileHeaderView: UIView {
 //            avatarImageViewForAnimation.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             avatarImageViewForAnimation.heightAnchor.constraint(equalToConstant: 1000),
         ])
-    }
-    
-    private func setupButton() {
-        statusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-    }
-    
-    @objc func buttonPressed() {
-        if textField.text!.isEmpty {
-            textField.shake()
-            return
-        }
-        
-        print(statusLabel.text!)
-        statusLabel.text = statusText
-        textField.text?.removeAll()
     }
     
     private func setupGesture() {

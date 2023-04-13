@@ -19,11 +19,10 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
     
     var cellImageView: UIImageView = {
         var imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
-        return imageView
+        return imageView.autoLayout()
     }()
     
     lazy var openGalleryButton: UIButton = {
@@ -35,7 +34,7 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 6
 
-        return button
+        return button.autoLayout()
     }()
     
     func setIndexPath(_ indexPath: IndexPath) {

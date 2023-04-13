@@ -12,60 +12,51 @@ final class PostDetaisView: UIView {
 
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return scrollView
+        return scrollView.autoLayout()
     }()
     
     private let contentView: UIView = {
         let contentView = UIView()
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return contentView
+        return contentView.autoLayout()
     }()
     
     private let postImageView: UIImageView = {
         var imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .black
-        return imageView
+        return imageView.autoLayout()
     }()
     
     private let authorLabel: UILabel = {
         var label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textColor = .black
         label.numberOfLines = 2
-        return label
+        return label.autoLayout()
     }()
     
     private let descriptionLabel: UILabel = {
         var label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = .systemGray
         label.numberOfLines = 0
-        return label
+        return label.autoLayout()
     }()
     
     private let likeLabel: UILabel = {
         var label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = .black
         label.isUserInteractionEnabled = true
-        return label
+        return label.autoLayout()
     }()
     
     private let viewLabel: UILabel = {
         var label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = .black
         label.isUserInteractionEnabled = true
-        return label
+        return label.autoLayout()
     }()
     
     init(model: PostModel) {
