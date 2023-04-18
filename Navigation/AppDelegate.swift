@@ -11,6 +11,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var appCoordinator: AppCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -19,7 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let navigationController = UINavigationController(rootViewController: feedVC)
 //
 //        window?.rootViewController = navigationController
-        window?.rootViewController = MainTabBarViewController()
+        
+        let factory = AppFactory()
+        let appCoordinator = AppCoordinator(factory: factory)
+        
+//        window?.rootViewController = MainTabBarViewController()
+        window?.rootViewController = appCoordinator.start()
         window?.makeKeyAndVisible()
 
         return true
